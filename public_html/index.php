@@ -1,13 +1,17 @@
 <?php
-
+ob_start();
 require_once '../config/init.php';
 
 $sql = new MySQLWrapper(MYSQL_USER, MYSQL_USER, MYSQL_USER, MYSQL_HOST);
 
-if(isset($_REQUEST['page'])) {
-    
+require_once ROOT . 'controllers/core/main.php';
+var_dump($page_modules);
+if(is_array($page_modules)) {
+    foreach($page_modules as $module) {
+        require_once ROOT . $module->module_path;
+    }
 }
 
-include '../controllers/core/pages.php';
+ob_end_flush();
 
 ?>

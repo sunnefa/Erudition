@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /Erudition/public_html/
+RewriteCond ${REQUEST_FILENAME} !-f
+RewriteCond ${REQUEST_FILENAME} !-d
+#rewrite rule: http://www.domain.com/(page)/
+RewriteRule ^([a-z0-9A-Z]+)/$ index.php?page=$1
+RewriteRule ^$ index.php?page=home [L]

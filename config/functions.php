@@ -81,6 +81,11 @@ function shuffle_assoc(&$array) {
    $array = $random_array;
 } 
 
+/**
+ * Counts how many booleans there are in an array and returns an array with those numbers
+ * @param array $array
+ * @return array 
+ */
 function array_count_booleans($array) {
     $returns = array('true' => 0, 'false' => 0);
     

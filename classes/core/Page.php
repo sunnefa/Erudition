@@ -84,6 +84,26 @@ class Page {
         }
     }
     
+    public function get_page_by_name($name) {
+        $page = $this->db_wrapper->select_data('pages__pages', '*', "page_name = '$name'");
+        
+        if($page) {
+            $page = array_flat($page);
+            
+            $this->page_id = $page['page_id'];
+            
+            $this->page_title = $page['page_title'];
+            
+            $this->page_url = $page['page_url'];
+            
+            $this->page_name = $page['page_name'];
+            
+            $this->page_meta = $page['page_meta_description'];
+        } else {
+            echo 'No page found';
+        }
+    }
+    
     /**
      * Loads the modules assigned to that page
      */
