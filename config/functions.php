@@ -4,7 +4,7 @@
  * @param string $class_name 
  */
 function __autoload($class_name) {
-    $class_folders = array('database', 'erudition', 'forum', 'quiz', 'users', 'core');
+    $class_folders = array('database', 'erudition', 'forum', 'quiz', 'users', 'core', 'text');
     
     foreach($class_folders as $folder) {
         if(file_exists('../classes/' . $folder . '/' . $class_name . '.php')) {
