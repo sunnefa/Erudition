@@ -1,0 +1,453 @@
+/**
+*
+* Erudition Styles
+* Ver 1: Aisha 'DiGo' Aliyu
+**/
+/** Meyer Reset **/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,and,address,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video,input,textarea,select{background:transparent;border:0;font-size:100%;margin:0;outline:0;padding:0;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}del{text-decoration:line-through}hr{background:transparent;border:0;clear:both;color:transparent;height:1px;margin:0;padding:0}mark{background-color:#ffffb3;font-style:italic}input,select{vertical-align:middle}ins{background-color:red;color:white;text-decoration:none}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}
+
+/* Clearfix */
+.clear{clear:both;display:block;height:0;overflow:hidden;visibility:hidden;width:0}.clearfix:after{clear:both;content:' ';display:block;font-size:0;height:0;line-height:0;visibility:hidden;width:0}* html .clearfix,:first-child+html .clearfix{zoom:1}
+
+/* Some basic settings */
+h1, h1 .button { font-size: 32px; }
+h2, h2 .button { font-size: 28px; }
+h3, h3 .button { font-size: 17px; }
+h4, h4 .button { font-size: 15px; }
+h5, h5 .button { font-size: 14px; }
+h6, h6 .button { font-size: 12px; }
+small { font-size: 10px; }
+ol { list-style: decimal; }
+ul { list-style: disc; }
+li { margin-left: 30px; }
+img { margin-bottom: 5px; }
+dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset,blockquote,article,p { margin-bottom: 20px; }
+
+/** Basic Elements **/
+body {
+	background: #fff;
+	border-top: 6px solid #EF4036;
+	color: #333;
+	font: 11px/1.7 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+	-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+	-webkit-text-size-adjust: 100%;
+}
+
+/** Override text selection **/
+::-moz-selection { background: #EF4036; color: #fff; text-shadow: none; }
+::selection { background: #EF4036; color: #fff; text-shadow: none; }
+
+.logo {
+	display:block;
+	padding-top:20px;
+	float:left;
+}
+
+h1, h2, h3, h4, h5, h6 { color:#EF4036;}
+
+/** Buttons including states **/
+/** Grey **/
+button.grey {
+  background-color: #eeeeee;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #cccccc));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+  background-image: linear-gradient(top, #eeeeee, #cccccc);
+  border: 1px solid #ccc;
+  border-bottom: 1px solid #bbb;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #333;
+  font: bold 11px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  line-height: 1;
+  padding: 8px 0;
+  text-align: center;
+  text-shadow: 0 1px 0 #eee;
+  width: 150px; }
+
+  button.grey:hover {
+    background-color: #dddddd;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dddddd), color-stop(100%, #bbbbbb));
+    background-image: -webkit-linear-gradient(top, #dddddd, #bbbbbb);
+    background-image: -moz-linear-gradient(top, #dddddd, #bbbbbb);
+    background-image: -ms-linear-gradient(top, #dddddd, #bbbbbb);
+    background-image: -o-linear-gradient(top, #dddddd, #bbbbbb);
+    background-image: linear-gradient(top, #dddddd, #bbbbbb);
+    border: 1px solid #bbb;
+    border-bottom: 1px solid #999;
+    cursor: pointer;
+    text-shadow: 0 1px 0 #ddd; }
+
+  button.grey:active {
+    border: 1px solid #aaa;
+    border-bottom: 1px solid #888;
+    -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+    -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+    box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee; }
+
+/** Burnt Orange Button **/
+button.orange {
+  background-color: #EF4036;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #EF4036), color-stop(100%, #EA241F));
+  background-image: -webkit-linear-gradient(top, #EF4036, #EA241F);
+  background-image: -moz-linear-gradient(top, #EF4036, #EA241F);
+  background-image: -ms-linear-gradient(top, #EF4036, #EA241F);
+  background-image: -o-linear-gradient(top, #EF4036, #EA241F);
+  background-image: linear-gradient(top, #EF4036, #EA241F);
+  border: 1px solid #EA241F;
+  border-bottom: 1px solid #EF4036;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #fff;
+  font: bold 11px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  line-height: 1;
+  padding: 8px 0;
+  text-align: center;
+  text-shadow: 0 1px 0 #EF4036;
+  width: 150px; }
+
+  button.orange:hover {
+    background-color: #E81C18;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #E8231F), color-stop(100%, #EA2D28));
+    background-image: -webkit-linear-gradient(top, #E8231F, #EA2D28);
+    background-image: -moz-linear-gradient(top, #E8231F, #EA2D28);
+    background-image: -ms-linear-gradient(top, #E8231F, #EA2D28);
+    background-image: -o-linear-gradient(top, #E8231F, #EA2D28);
+    background-image: linear-gradient(top, #E8231F, #EA2D28);
+    border: 1px solid #EA2D28;
+    border-bottom: 1px solid #E81C18;
+    cursor: pointer;
+    text-shadow: 0 1px 0 #E81C18; }
+
+  button.orange:active {
+    border: 1px solid #E81C18;
+    border-bottom: 1px solid #E81C18;
+    -webkit-box-shadow: inset 0 0 5px 2px #C6110C, 0 1px 0 0 #E51C17;
+    -moz-box-shadow: inset 0 0 5px 2px #C6110C, 0 1px 0 0 #E51C17;
+    box-shadow: inset 0 0 5px 2px #C6110C, 0 1px 0 0 #E51C17; }
+
+
+/** Alert Boxes **/
+.error, .success, .info, .notice, .wpcf7-response-output {
+	display: block;
+	padding: 10px 20px 10px 44px;
+}
+
+.error {
+	background: #f9e5e6 url(../img/icon-box-error.png) no-repeat 10px 9px;
+	border: 1px solid #f7c7c9;
+	border-left-width: 4px;
+	color: #b3696c;
+}
+
+.success {
+	background: #e3ebc6 url(../img/icon-box-success.png) no-repeat 12px 8px;
+	border: 1px solid #c2d288;
+	border-left-width: 4px;
+	color: #8fa442;
+}
+
+.info {
+	background: #d8ecf5 url(../img/icon-box-info.png) no-repeat 10px 8px;
+	border: 1px solid #9ac9df;
+	border-left-width: 4px;
+	color: #528da9;
+}
+
+.notice {
+	background: #fcf7d9 url(../img/icon-box-notice.png) no-repeat 10px 9px;
+	border: 1px solid #f5dc7d;
+	border-left-width: 4px;
+	color: #c4a21b;
+}
+
+/* invisibility class for when elements must be dynamically hidden */
+.invisible {
+    display:none;
+    visibility:hidden;
+}
+
+/** Generic **/
+.hidden { display: none; }
+
+.disabled { cursor: auto; }
+
+.red {color:red;}
+
+.screenreader { clip: rect(1px 1px 1px 1px); clip: rect(1px, 1px, 1px, 1px); /* Fallback for old IE */ position: absolute; }
+
+.align-center { margin-left: auto; margin-right: auto; text-align: center; }
+
+.align-left { float: left; }
+
+	img.align-left { margin-bottom: 15px; margin-right: 15px; }
+
+.align-right { float: right; }
+
+	img.align-right { margin-bottom: 15px; margin-left: 15px; }
+
+/** Radio and Check Buttons **/
+.checkradio{
+	list-style: none;
+}
+
+input[type="checkbox"], input[type="radio"]{
+ 	-khtml-appearance: none;
+ 	background: url('../img/RadioAndCheckBoxSprite.gif') no-repeat;
+ 	width: 20px;
+ 	height: 20px;
+ 	vertical-align: middle;
+	border: none;
+}
+
+input[type="checkbox"]{
+ 	background-position-x: left;
+}
+
+input[type="radio"]{
+ 	background-position-x: right;
+}
+
+input[type="checkbox"]:hover, input[type="radio"]:hover{
+ 	background-position-y: -40px;
+}
+
+input[type="checkbox"]:checked, input[type="radio"]:checked {
+ 	background-position-y: -20px;
+}
+
+input[type="checkbox"]:checked:hover, input[type="radio"]:checked:hover {
+ 	background-position-y: -60px;
+}
+
+/** disabled settings for checkbox and radiobutton **/
+input[type="radio"]:disabled, input[type="checkbox"]:disabled{
+ 	opacity: .5;
+}
+
+/** Forms **/
+label {
+	cursor: pointer;
+	display: inline;
+	font-family: 'Open Sans', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+	margin: 0;
+}
+
+input, textarea, select {
+	-webkit-appearance: none; /* Fix for Mobile Safari */
+	background-color: #f8f8f8;
+	border: 1px solid #e8e8e8;
+	-webkit-border-radius: 0;
+	   -moz-border-radius: 0;
+	        border-radius: 0;
+	-webkit-box-shadow: none;
+	   -moz-box-shadow: none;
+			box-shadow: none;
+	color: #8f8f8f;
+	font: 12px/1.5 'Open Sans', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+	padding: 5px 10px;
+	border-radius: 0;
+}
+
+input, select {
+	height: 30px;
+	width: 200px;
+}
+
+textarea {
+	padding: 10px;
+	resize: both;
+}
+	
+	input:hover, textarea:hover, select:hover { border-color: #dedede; }
+	
+	input:focus, textarea:focus, select:focus { border-color: #ccc; }
+
+input[type="submit"], button {
+	font-size: 13px;
+	text-transform: uppercase;
+}
+
+	input[type="submit"].medium, button.medium { font-size: 15px; }
+
+	input[type="submit"].large, button.large { font-size: 17px; }
+
+select, option {
+	cursor: pointer;
+	padding: 5px 7px;
+}
+/** Speech Bubbles **/
+.speech-bubble{
+	width: 200px;
+	padding: 10px;
+	background: #404040;
+	color: #fff;
+	font: normal 12px "Segoe UI", Arial, Sans-serif;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.speech-bubble:after{
+	content: "";
+	border: solid 10px transparent; /* set all borders to 10 pixels width */
+	border-top-color: #404040; /* the callout */
+	border-bottom: 0; /* we do not need the bottom border in this case */
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	display: block;
+	position: relative;
+	bottom: -20px; /* border-width of the :after element + padding of the root element */
+	margin: auto;
+}
+
+/** Main Body **/
+.container {
+	margin: 0 auto;
+	position: relative;
+	width: 940px;
+}
+
+	/**	Columns **/
+	.one-half, .one-third, .two-third, .one-fourth, .three-fourth {
+		float: left;
+		margin-right: 20px;
+	}
+
+	.one-half.last, .one-third.last, .two-third.last, .one-fourth.last, .three-fourth.last { margin-right: 0px; }
+
+	.one-half { width: 460px; }
+
+	.one-third { width: 300px; }
+
+		.two-third { width: 620px; }
+
+	.one-fourth { width: 220px; }
+
+		.three-fourth { width: 700px; }
+
+
+/** These are media specific queries **/
+@media only screen and (min-width: 1024px) and (max-width: 1151px) {
+
+
+	.container{width:940px;}
+	
+
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+		
+	/**	Wrap **/
+
+	.container { width: 748px; }
+
+
+		/**	Columns **/
+
+		.one-half { width: 364px; }
+
+		.one-third { width: 236px; }
+
+		.two-third { width: 492px; }
+
+		.one-fourth { width: 172px; }
+
+		.three-fourth { width: 556px; }
+
+
+		#main { width: 488px; }
+
+
+
+}
+
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+
+
+			/**	Generic Classes **/
+			.align-left, .align-right { float: none; }
+
+			
+			/**	Wrap **/
+
+			.container { width: 300px; }
+
+
+				/** Columns **/
+
+				.one-half, .one-third, .two-third, .one-fourth, .three-fourth {
+					float: none;
+					margin-right: 0;
+				}
+
+				.one-half { width: 300px; }
+
+				.one-third { width: 300px; }
+
+				.two-third { width: 300px; }
+
+				.one-fourth { width: 300px; }
+
+				.three-fourth { width: 300px; }
+
+			
+
+			#main {
+				float: none;
+				margin-right: 0;
+				width: 100%;
+			}
+
+		
+			#sidebar {
+				float: none;
+				margin-top: 40px;
+				width: 100%;
+			}
+
+
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+			/*	Wrap **/
+
+			.container { width: 420px; }
+
+			
+				/**	Columns **/
+
+				.one-half, .one-third, .two-third, .one-fourth, .three-fourth {
+					float: none;
+					margin-right: 0;
+				}
+
+				.one-half { width: 420px; }
+
+				.one-third { width: 420px; }
+
+				.two-third { width: 420px; }
+
+				.one-fourth { width: 420px; }
+
+				.three-fourth { width: 420px; }
+
+		
+
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+
+
+}

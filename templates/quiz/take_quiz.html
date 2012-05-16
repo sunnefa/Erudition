@@ -1,0 +1,12 @@
+<h1>{QUIZ_TITLE}</h1>
+<p>{QUIZ_DESCRIPTION}</p>
+<form action="?quiz_id={QUIZ_ID}&amp;submit=true" method="post" id="take_quiz">
+<ul>
+    {QUESTION_LIST}
+</ul>
+    <input type="hidden" name="quiz_process" id="quiz_process" value="?quiz_id={QUIZ_ID}&amp;submit=true" />
+    <div>
+        <button class="orange" {DISABLED} type="submit">Submit</button>
+        <div class="loading"></div><!-- Ajax or whatever loader -->
+    </div>
+</form>
