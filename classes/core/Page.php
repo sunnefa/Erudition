@@ -84,6 +84,12 @@ class Page {
         }
     }
     
+    /**
+     * Selects a pages from the database based on its name
+     * If more than one page happens to have the same name (should be forbidden but I suppose it could happen)
+     * the last page will be selected because of the array_flat function
+     * @param type $name 
+     */
     public function get_page_by_name($name) {
         $page = $this->db_wrapper->select_data('pages__pages', '*', "page_name = '$name'");
         

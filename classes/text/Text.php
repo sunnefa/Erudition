@@ -5,17 +5,42 @@
  * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
  */
 class Text {
+    /**
+     * The id of the selected text
+     * @var int
+     */
     public $text_id;
     
+    /**
+     * The name of the selected text
+     * @var string
+     */
     public $text_name;
     
+    /**
+     * The actual text
+     * @var string
+     */
     public $text;
     
+    /**
+     * The id of the page the text is on - note one page can have more than one text but the same text cannot be on many pages
+     * @var int
+     */
     public $page_id;
     
+    /**
+     * Holds a reference to the database wrapper
+     * @var DBWrapper 
+     */
     protected $db_wrapper;
     
-    function __construct(MySQLWrapper $db_wrapper, $page_id = null) {
+    /**
+     * Constructor of the text object
+     * @param DBWrapper $db_wrapper
+     * @param int $page_id 
+     */
+    function __construct(DBWrapper $db_wrapper, $page_id = null) {
         $this->db_wrapper = $db_wrapper;
         
         if($page_id) {
@@ -23,6 +48,12 @@ class Text {
         }
     }
     
+    /**
+     * Selects the text based on the page_id
+     * I decided to have it like that because I find it unlikely you would know the text id and 
+     * because of the one-to-many relationship between text and pages
+     * @param type $page_id 
+     */
     private function select_text($page_id) {
         $text = $this->db_wrapper->select_data('pages__text', '*', "page_id = $page_id");
         
