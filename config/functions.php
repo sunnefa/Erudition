@@ -133,13 +133,13 @@ function set_session($session_name, $session_value) {
  */
 function reload($where = '') {
     if(!empty($where)) {
-        header('Location: ?' . $where);
+        header('Location: ' . $where);
         exit;
-    } elseif(empty($_SERVER['QUERY_STRING'])) {
-        header('Location: index.php');
+    } elseif(isset($_GET['page'])) {
+        header('Location: /' . $_GET['page']);
         exit;
     } else {
-        header('Location: ?' . $_SERVER['QUERY_STRING']);
+        header('Location: ' . $_SERVER['REQUEST_URI']);
         exit;
     }
 }

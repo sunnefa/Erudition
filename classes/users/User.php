@@ -149,10 +149,10 @@ class User {
                 if($user['user_is_active'] == 1) {
                     $this->assign_values_to_properties($user);
 
-                    $online = $this->db_wrapper->update_data('user__users', array('user_is_online' => '1'), 'user_id = ' . $user['user_id']);
+                    $online = $this->db_wrapper->update_data('users__users', array('user_is_online' => '1'), 'user_id = ' . $user['user_id']);
 
-                    set_cookies('user', $user['id']);
-                    set_session('user', $user['id']);
+                    set_cookies('user', $user['user_id']);
+                    set_session('user', $user['user_id']);
                     return true;
                 } else {
                     return false;
