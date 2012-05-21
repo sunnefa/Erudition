@@ -232,7 +232,7 @@ input[type="radio"]:disabled, input[type="checkbox"]:disabled{
 /** Forms **/
 label {
 	cursor: pointer;
-	display: inline;
+	display: block;
 	font-family: 'Open Sans', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 	margin: 0;
 }

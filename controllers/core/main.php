@@ -6,7 +6,7 @@ if(count($_GET) > 0) {
 }
 
 //is it a post request?
-if($_SERVER['REQUEST_METHOD'] == 'post') {
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once ROOT . 'controllers/core/post.php';
 }
 

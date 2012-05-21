@@ -100,4 +100,48 @@ function array_count_booleans($array) {
     return $returns;
 }
 
+/**
+ * Sets a cookie with the name and value given that stays alive for the number of days given
+ * @param string $cookie_name
+ * @param mixed $cookie_value
+ * @param int $days_alive 
+ */
+function set_cookies($cookie_name, $cookie_value, $days_alive = 30) {
+    $expires = time() + 60 * 60 * 24 * $days_alive;
+    setcookie($cookie_name, $cookie_value, $expires);
+}
+
+/**
+ * Sets a session variable with the name and value given if a session has been started
+ * @param string $session_name
+ * @param mixed $session_value
+ * @return boolean 
+ */
+function set_session($session_name, $session_value) {
+    if(isset($_SESSION)) {
+        $_SESSION[$session_name] = $session_value;
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * Executes a header reload
+ * @param string $where
+ * @return void 
+ */
+function reload($where = '') {
+    if(!empty($where)) {
+        header('Location: ?' . $where);
+        exit;
+    } elseif(empty($_SERVER['QUERY_STRING'])) {
+        header('Location: index.php');
+        exit;
+    } else {
+        header('Location: ?' . $_SERVER['QUERY_STRING']);
+        exit;
+    }
+}
+
 ?>
