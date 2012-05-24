@@ -85,6 +85,7 @@ class MySQLWrapper extends DBWrapper {
      * @param string $where 
      */
     public function delete_data($table_name, $where = 1){
+        $where = $this->sanity($where);
         $statement = replace_tokens($this->delete_statement, array('TABLE_NAME' => "`" . $table_name . "`", 'WHERE' => $where));
         
         $success = $this->execute($statement);
@@ -112,6 +113,7 @@ class MySQLWrapper extends DBWrapper {
      * @param array $fields_data 
      */
     public function insert_data($table_name, $fields_data){
+        $fields_data = $this->sanity($fields_data);
         $fields = implode(', ', array_keys($fields_data));
         $data = implode("', '", $fields_data);
         
@@ -126,7 +128,8 @@ class MySQLWrapper extends DBWrapper {
      * Replaces a piece of data in the database with new values
      * @param string $table_name
      * @param string $fields_data
-     * @param string $where 
+     * @param string $where
+     * TODO: Implement this method!
      */
     public function replace_data($table_name, $fields_data, $where){
         
@@ -144,12 +147,15 @@ class MySQLWrapper extends DBWrapper {
      */
     public function select_data($table, $fields, $where = null, $limit = null, $order = null, $group = null, $join = null){
         //the table
+        $table = $this->sanity($table);
         $table_name = (is_array($table)) ? "`{$table[0]}` AS {$table[1]}" : "`$table`";
 
         //the fields
+        $fields = $this->sanity($fields);
         $field_string = (is_array($fields)) ? implode(", ", $fields) : $fields;
         
         //the where
+        $where = $this->sanity($where);
         $where_string = ($where != null) ? "WHERE " . $where : "";
         
         //the limit
@@ -183,6 +189,8 @@ class MySQLWrapper extends DBWrapper {
      * @param string $where 
      */
     public function update_data($table_name, $fields_data, $where){
+        $fields_data = $this->sanity($fields_data);
+        $where = $this->sanity($where);
         $last = end(array_keys($fields_data));
         $field_string = "";
         foreach($fields_data as $field => $data) {
@@ -222,6 +230,20 @@ class MySQLWrapper extends DBWrapper {
         $statement = replace_tokens($this->join_statement, array('TYPE' => $type, 'TABLE_NAME' => "$table_name", 'FIELD_1' => $fields[0], 'FIELD_2' => $fields[1]));
         
         return $statement;
+    }
+    
+    private function sanity($data) {
+        if(is_array($data)) {
+            $returning = array();
+            foreach($data as $key => $piece) {
+                $san_key = mysql_real_escape_string($key, $this->conn);
+                $san_piece = mysql_real_escape_string($piece, $this->conn);
+                $returning[$san_key] = $san_piece;
+            }
+        } else {
+            $returning = mysql_real_escape_string($data, $this->conn);
+        }
+        return $returning;
     }
 }
 
