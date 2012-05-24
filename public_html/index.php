@@ -12,7 +12,6 @@ if(is_array($page_modules)) {
         require_once ROOT . $module->module_path;
     }
 }
-
 ob_end_flush();
 
 ?>

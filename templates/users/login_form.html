@@ -1,10 +1,20 @@
-<div class="one-half last">
-<h3>Login</h3>
+<div class="one-half last login">
+     <h2>Sign In</h2>
 <p class="{MESSAGE_CLASS}">{MESSAGE}</p>
 <form action="index.php" method="post">
     <label for="email">Email address:</label> <input type="email" name="user_email" size="22" id="email" />
     <label for="password">Password:</label> <input type="password" name="user_password" size="22" id="password" />
     <input type="hidden" name="form" value="login_form" />
-    <div><button class="orange" type="submit">Submit</button></div>
+    <div class="submit_div">
+    <p class="left"><button class="grey" type="submit">Submit</button></p>
+    <p class="right"><input type="checkbox" value="remember" name="remember" id="remember" /><label class="radio" for="remember">Remember me</label></p>
+    </div>
+    <div class="clear"></div>
+    <p><a href="/password_recovery">Forgotten your password or can't access your account?</a></p>
 </form>
 </div>
+<div class="one-half">&nbsp;</div>
+    <div class="one-half last">
+        <p>&nbsp;</p>
+        <p><button class="orange" type="submit">Sign up</button> &nbsp; <a href="/signup">Learn more &raquo;</a></p>
+    </div>

@@ -195,8 +195,28 @@ class User {
             $this->user_registered_since = (isset($user_array['user_registered_since'])) ? $user_array['user_registered_since'] : '';
             
             $this->user_uses_gravatar = (isset($user_array['user_uses_gravatar'])) ? $user_array['user_uses_gravatar'] : '';
+            $this->user_email (isset($user_array['user_email'])) ? $user_array['user_email'] : '';
             
             $this->user_image = $this->build_gravatar_url();
+    }
+    
+    public function load_multiple_users($number = all, $order_by = 'user_id') {
+        $limit = (is_integer($number)) ? $number : '';
+        
+        $users = $this->db_wrapper->select_data('users__users', '*', null, $limit, $order_by);
+        
+        if($users) {
+            foreach($users as $key => $user) {
+                $users[$key]['image'] = "http://www.gravatar.com/avatar/";
+        
+                $users[$key]['image'] .= md5(strtolower(trim($user['user_email'])));
+        
+                $users[$key]['image'] .= "?s=100&d=http://localhost/Erudition/public_html/img/default_user.png&r=g";
+            }
+            return $users;
+        } else {
+            echo 'No users found';
+        }
     }
 }
 

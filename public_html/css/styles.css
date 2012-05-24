@@ -237,6 +237,10 @@ label {
 	margin: 0;
 }
 
+label.radio {
+    display:inline;
+}
+
 input, textarea, select {
 	-webkit-appearance: none; /* Fix for Mobile Safari */
 	background-color: #f8f8f8;
@@ -304,6 +308,104 @@ select, option {
 	position: relative;
 	bottom: -20px; /* border-width of the :after element + padding of the root element */
 	margin: auto;
+}
+
+ul.user_list {
+    list-style: none;
+}
+
+ul.user_list li {
+    width:40%;
+    text-align: center;
+}
+
+ul.user_list li.left {
+    float:left;
+}
+
+ul.user_list li.right {
+    float:right;
+}
+
+/* The login form rules */
+.login {
+    background:#FEECEC;
+}
+
+.login form {
+    margin:10px;
+    padding:30px;
+}
+
+.login h2 {
+    padding-left:10px;
+}
+
+.login form div.submit_div {
+    margin-top:20px;
+}
+
+.login form div p.left {
+    float:left;
+    width:45%;
+}
+.login form div p.right {
+    float:right;
+    width:45%;
+}
+
+/* The selling points list on the front page */
+ul.selling-points {
+    list-style: none;
+}
+
+ul.selling-points li {
+    height:40px;
+    padding-top:30px;
+}
+
+.erudite, .pace, .formats, .variety {
+    height:72px;
+    width:72px;
+    position:absolute;
+    background-repeat:no-repeat;
+    left:-40px;
+    
+}
+
+.erudite {
+    background-image: url('../img/exams.png');
+}
+
+.pace {
+   background-image: url('../img/own-pace.png'); 
+}
+
+.formats {
+    background-image: url('../img/various-formats.png');
+}
+
+.variety {
+    background-image: url('../img/course-topics.png');
+}
+
+/* Navigation */
+nav#top {
+    
+}
+
+nav#footer {
+   margin:30px auto;
+   border:1px solid #FFF;
+}
+
+nav#footer ul {
+    list-style: none;
+}
+
+nav#footer ul li {
+    width:20%;
+    float:left;
 }
 
 /** Main Body **/
