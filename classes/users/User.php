@@ -218,6 +218,73 @@ class User {
             echo 'No users found';
         }
     }
+    
+    /**
+     * Adds a new user to the database
+     * @param string $first_name
+     * @param string $last_name
+     * @param string $email
+     * @param string $password
+     * @return boolean 
+     */
+    public function register_user($first_name, $last_name, $email, $password) {
+        $activation_key = $this->generate_activation_key($email);
+        $reg = $this->db_wrapper->insert_data('users__users', array(
+            'user_first_name' => $first_name,
+            'user_last_name' => $last_name,
+            'user_password' => $password,
+            'user_email' => $email,
+            'user_registered_since' => date('Y-m-d H:i:s'),
+            'user_last_logged_in_date' => '00-00-00 00:00:00',
+            'user_is_active' => 0,
+            'user_uses_gravatar' => 1,
+            'user_is_online' => 0,
+            'user_activation_key' => $activation_key
+            ));
+        
+        if($reg) {
+            $this->send_activation_email($first_name, $last_name, $email, $activation_key);
+            return true;
+        }
+        return false; 
+    }
+    
+    /**
+     * Sends an activation email to a user
+     * @param string $first_name
+     * @param string $last_name
+     * @param string $email
+     * @param string $activation_key
+     * @return boolean 
+     */
+    private function send_activation_email($first_name, $last_name, $email, $activation_key) {
+        $admin_email = 'regs@erudition.com';
+        $subject = 'Welcome to Erudition ' . $first_name . '!';
+        $to = $email;
+        $url = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+        $url = str_replace('/index.php', '', $url);
+        $message = <<<EOT
+        <p>Hi $first_name $last_name!</p>
+            <p>Welcome to Erudition. This email is the first on your journey to become an Erudite. Before you can login, we need to verify your account. Please click the link below to activate your account and login to start enjoying our courses and becoming an Erudite of the highest quality.</p>
+            <p><a href="$url/signup/?activation=$activation_key">Activate my account!</a></p>
+                <p>Best regards,</p>
+                <p>The Erudition team</p>
+EOT;
+        $message = wordwrap($message, 70);
+        $headers = "From: The Erudition team<" . $admin_email . ">\r\n";
+        $headers .= "Content-type: text/html; charset=utf-8" . "\r\n";
+        $sending = mail($to, $subject, $message, $headers);
+        if(!$sending) return false; else return true;
+    }
+    
+    /**
+     * Generates an activation key by randomizing, then hashing the user's email address
+     * @param type $string
+     * @return type 
+     */
+    private function generate_activation_key($string) {
+        return md5(sha1(str_shuffle($string)));
+    }
 }
 
 ?>
