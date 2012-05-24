@@ -391,7 +391,19 @@ ul.selling-points li {
 
 /* Navigation */
 nav#top {
-    
+    margin:10px auto;
+    border: 1px solid #FFF;
+}
+
+nav#top ul {
+    list-style: none;
+}
+
+nav#top ul li {
+    width:100px;
+    margin:0 5px;
+    float:left;
+    text-align: center;
 }
 
 nav#footer {
@@ -406,6 +418,24 @@ nav#footer ul {
 nav#footer ul li {
     width:20%;
     float:left;
+}
+
+nav a {
+    color:#f03f35;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav#top a {
+    color:#000;
+}
+
+nav#top a.current {
+    color: #f03f45;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }
 
 /** Main Body **/

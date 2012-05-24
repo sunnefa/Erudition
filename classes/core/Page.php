@@ -124,7 +124,13 @@ class Page {
      * TODO: Select multiple pages 
      */
     public function select_multiple_pages() {
+        $pages = $this->db_wrapper->select_data('pages__pages', '*');
         
+        if($pages) {
+            return $pages;
+        } else {
+            return null;
+        }
     }
 }
 
