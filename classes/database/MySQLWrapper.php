@@ -85,7 +85,6 @@ class MySQLWrapper extends DBWrapper {
      * @param string $where 
      */
     public function delete_data($table_name, $where = 1){
-        $where = $this->sanity($where);
         $statement = replace_tokens($this->delete_statement, array('TABLE_NAME' => "`" . $table_name . "`", 'WHERE' => $where));
         
         $success = $this->execute($statement);
@@ -147,15 +146,12 @@ class MySQLWrapper extends DBWrapper {
      */
     public function select_data($table, $fields, $where = null, $limit = null, $order = null, $group = null, $join = null){
         //the table
-        $table = $this->sanity($table);
         $table_name = (is_array($table)) ? "`{$table[0]}` AS {$table[1]}" : "`$table`";
 
         //the fields
-        $fields = $this->sanity($fields);
         $field_string = (is_array($fields)) ? implode(", ", $fields) : $fields;
         
         //the where
-        $where = $this->sanity($where);
         $where_string = ($where != null) ? "WHERE " . $where : "";
         
         //the limit
