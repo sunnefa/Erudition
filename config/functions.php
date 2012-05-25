@@ -144,4 +144,24 @@ function reload($where = '') {
     }
 }
 
+/**
+ * Checks if a password is strong, ie has 8 characters, 1 lowercase and 1 uppercase
+ * @param string $password
+ * @return boolean 
+ */
+function password_is_strong($password) {
+    if(preg_match('(^.*(?=.{8})(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$)', $password)) return true;
+    return false;
+}
+
+/**
+ * Checks a given email against a regular expression to validate that it is in fact an email address
+ * @param string $email
+ * @return boolean 
+ */
+function is_email_address($email) {
+    if(preg_match('(^.*[a-zA-Z0-9-_\.]+@.*[a-zA-Z0-9-_\.]+[\.]+.*[a-z\.]{2,6})', $email)) return true;
+    return false;
+}
+
 ?>
