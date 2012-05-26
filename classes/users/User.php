@@ -286,12 +286,25 @@ EOT;
         return md5(sha1(str_shuffle($string)));
     }
     
+    /**
+     * Checks if an email exists in the database
+     * @param string $email
+     * @return boolean 
+     */
     public function email_exists($email) {
         $email = $this->db_wrapper->select_data('users__users', 'user_email', "user_email = '$email'");
         if($email != null) {
             return true;
         }
         return false;
+    }
+    
+    /**
+     * Activates a user in the database based on their activation key
+     * @param string $activation_key 
+     */
+    public function activate_user($activation_key) {
+        
     }
 }
 

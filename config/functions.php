@@ -108,7 +108,16 @@ function array_count_booleans($array) {
  */
 function set_cookies($cookie_name, $cookie_value, $days_alive = 30) {
     $expires = time() + 60 * 60 * 24 * $days_alive;
-    setcookie($cookie_name, $cookie_value, $expires);
+    setcookie($cookie_name, $cookie_value, $expires, '/');
+}
+
+/**
+ * Unsets a cookie by its name
+ * @param string $cookie_name 
+ */
+function unset_cookie($cookie_name) {
+    $expires = time() - 30 * 24 * 60 * 60;
+    setcookie($cookie_name, '', $expires, '/');
 }
 
 /**
@@ -132,14 +141,17 @@ function set_session($session_name, $session_value) {
  * @return void 
  */
 function reload($where = '') {
+    $base = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+    $base = (isset($_GET['page'])) ? str_replace($_GET['page'], '', $base) : $base;
+    $base = str_replace('index.php', '', $base);
     if(!empty($where)) {
-        header('Location: ' . $where);
+        header('Location: ' . $base . $where);
         exit;
     } elseif(isset($_GET['page'])) {
-        header('Location: /' . $_GET['page']);
+        header('Location: /' . $base . $_GET['page']);
         exit;
     } else {
-        header('Location: ' . $_SERVER['REQUEST_URI']);
+        header('Location: ' . $base);
         exit;
     }
 }
