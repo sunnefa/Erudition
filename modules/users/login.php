@@ -11,5 +11,7 @@ if(is_logged_in()) {
 }
 
 unset($_SESSION['messages']['login_failed']);
-
+/**
+ * TODO: Add functionality to show the old values if the login failed 
+ */
 ?>

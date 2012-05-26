@@ -4,8 +4,8 @@ $user = new User($sql);
 $user_first_name = $_POST['first_name'];
 $user_last_name = $_POST['last_name'];
 $user_email = $_POST['email_address'];
-$user_password = md5($_POST['password']);
-$user_repeat_pass = md5($_POST['repeat_pass']);
+$user_password = $_POST['password'];
+$user_repeat_pass = $_POST['repeat_pass'];
 
 if($user_password != $user_repeat_pass) {
     $_SESSION['messages']['repeat_fail'] = "Passwords don't match";
@@ -20,7 +20,7 @@ if($user_password != $user_repeat_pass) {
     $_SESSION['messages']['email_fail'] = 'That email is already in use. Did you forget your password?';
     $_SESSION['messages']['reg_fail'] = 'Registration failed. Please correct all errors and try again';
 } else {
-    $registered = $user->register_user($user_first_name, $user_last_name, $user_email, $user_password);
+    $registered = $user->register_user($user_first_name, $user_last_name, $user_email, md5($user_password));
     if(!$registered) {
         $_SESSION['messages']['reg_fail'] = 'Registration failed. Please correct all errors and try again.';
     } else {

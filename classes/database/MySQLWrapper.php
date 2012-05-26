@@ -186,7 +186,7 @@ class MySQLWrapper extends DBWrapper {
      */
     public function update_data($table_name, $fields_data, $where){
         $fields_data = $this->sanity($fields_data);
-        $where = $this->sanity($where);
+        //$where = $this->sanity($where);
         $last = end(array_keys($fields_data));
         $field_string = "";
         foreach($fields_data as $field => $data) {
@@ -197,7 +197,7 @@ class MySQLWrapper extends DBWrapper {
         }
         
         $statement = replace_tokens($this->update_statement, array('TABLE_NAME' => $table_name, 'FIELDS' => $field_string, 'WHERE' => $where));
-        
+        echo $statement;
         $success = $this->execute($statement);
         
         return $success;

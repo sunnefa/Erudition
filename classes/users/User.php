@@ -304,7 +304,9 @@ EOT;
      * @param string $activation_key 
      */
     public function activate_user($activation_key) {
-        
+        $activation = $this->db_wrapper->update_data('users__users', array('user_is_active' => 1), "user_activation_key = '$activation_key'");
+        if($activation) return true;
+        else return false;
     }
 }
 
