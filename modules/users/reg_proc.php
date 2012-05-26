@@ -16,6 +16,9 @@ if($user_password != $user_repeat_pass) {
 } elseif(!is_email_address($user_email)) {
     $_SESSION['messages']['email_fail'] = 'That is not a valid email address';
     $_SESSION['messages']['reg_fail'] = 'Registration failed. Please correct all errors and try again.';
+} elseif($user->email_exists($user_email)) {
+    $_SESSION['messages']['email_fail'] = 'That email is already in use. Did you forget your password?';
+    $_SESSION['messages']['reg_fail'] = 'Registration failed. Please correct all errors and try again';
 } else {
     $registered = $user->register_user($user_first_name, $user_last_name, $user_email, $user_password);
     if(!$registered) {
@@ -26,4 +29,8 @@ if($user_password != $user_repeat_pass) {
     
 }
 reload('signup');
+
+/**
+ * TODO: if the registration is successful, show a register success page 
+ */
 ?>

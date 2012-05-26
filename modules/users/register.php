@@ -2,7 +2,7 @@
 if(isset($_GET['activation'])) {
     include 'activation.php';
 } else {
-  if(!isset($_SESSION['user']) || !isset($_COOKIE['user'])) {
+  if(!is_logged_in()) {
     ob_start();
     include ROOT . 'templates/users/registration_form.html';
     //if the registration failed, show an error message
@@ -21,4 +21,7 @@ if(isset($_GET['activation'])) {
     }  
 }
 unset($_SESSION['messages']);
+/**
+ * TODO: Make the old values of the form appear again, save for the password, upon reload 
+ */
 ?>

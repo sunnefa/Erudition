@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_SESSION['user']) || isset($_COOKIE['user'])) {
+if(is_logged_in()) {
     include 'show_erudites.php';
 } else {
     ob_start();

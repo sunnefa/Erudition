@@ -195,7 +195,7 @@ class User {
             $this->user_registered_since = (isset($user_array['user_registered_since'])) ? $user_array['user_registered_since'] : '';
             
             $this->user_uses_gravatar = (isset($user_array['user_uses_gravatar'])) ? $user_array['user_uses_gravatar'] : '';
-            $this->user_email (isset($user_array['user_email'])) ? $user_array['user_email'] : '';
+            $this->user_email = (isset($user_array['user_email'])) ? $user_array['user_email'] : '';
             
             $this->user_image = $this->build_gravatar_url();
     }
@@ -284,6 +284,14 @@ EOT;
      */
     private function generate_activation_key($string) {
         return md5(sha1(str_shuffle($string)));
+    }
+    
+    public function email_exists($email) {
+        $email = $this->db_wrapper->select_data('users__users', 'user_email', "user_email = '$email'");
+        if($email != null) {
+            return true;
+        }
+        return false;
     }
 }
 

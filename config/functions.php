@@ -164,4 +164,9 @@ function is_email_address($email) {
     return false;
 }
 
+function is_logged_in() {
+    if(isset($_SESSION['user']) || isset($_COOKIE['user'])) return true;
+    else return false;
+}
+
 ?>
