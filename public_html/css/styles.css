@@ -583,3 +583,40 @@ nav a:hover {
 
 
 }
+
+/* Forum rules */
+table#forum {
+    width:900px;
+    border:1px solid #000;
+    font: 14px/1.8 'Lucida Grande', 'Lucida Sans Unicode', sans-serif; 
+}
+
+table#forum tbody {
+    border: 1px solid #000;
+}
+
+table#forum tbody:nth-child(odd) {
+    background-color:#ff0;
+}
+table#forum tbody:nth-child(even) {
+    background-color:#0ff;
+}
+table#forum thead tr {
+    background-color: #f00;
+}
+
+table#forum tr td {
+    vertical-align: top;
+    padding: 5px;
+}
+
+table#forum td.latest, table#forum th.latest {
+    width:25%;
+    text-align:center;
+    border:1px solid #000;
+}
+
+table#forum td.date, table#forum td.post_title {
+    font-size:10px;
+    text-align: center;
+}

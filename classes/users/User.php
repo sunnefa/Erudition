@@ -197,7 +197,7 @@ class User {
             $this->user_uses_gravatar = (isset($user_array['user_uses_gravatar'])) ? $user_array['user_uses_gravatar'] : '';
             $this->user_email = (isset($user_array['user_email'])) ? $user_array['user_email'] : '';
             
-            $this->user_image = $this->build_gravatar_url();
+            $this->build_gravatar_url();
     }
     
     public function load_multiple_users($number = all, $order_by = 'user_id') {

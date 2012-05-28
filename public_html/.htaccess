@@ -7,5 +7,10 @@ RewriteRule ^([a-z0-9A-Z]+)/$ index.php?page=$1
 RewriteRule ^$ index.php?page=home [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQEUST_FILENAME} !-d
+RewriteRule ^community/([a-zA-Z]+)/$ index.php?page=community&part=$1
+RewriteRule ^community/([a-zA-Z]+)/([0-9]+)/$ index.php?page=community&part=$1&id=$2
+
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !([a-z0-9A-Z]+)/$
 RewriteRule ^([a-z0-9A-Z]+)$ $1/ [L,R=301]
