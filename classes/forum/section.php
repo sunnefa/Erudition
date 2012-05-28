@@ -51,7 +51,8 @@ class Section {
             'p.post_date',
             "CONCAT(u.user_first_name, ' ', u.user_last_name) AS username",
             't.topic_id',
-            't.topic_title'
+            't.topic_title',
+            'p.post_id'
         ), 's.section_id = ' . $section_id, 1, 'p.post_date DESC', 'p.post_id', $topics_sections_join . ' ' . $posts_topics_join . ' ' . $users_posts_join);
         if(is_array($post)) $post = array_flat($post);
         

@@ -57,8 +57,24 @@ class Topic {
             't.topic_section',
             "CONCAT(u.user_first_name, ' ', u.user_last_name) AS user_name"
         ), $where, null, null, 't.topic_id', $joins);
-        if($topics) return $topics;
+        if($topics) {
+            foreach($topics as $key => $topic) {
+                $topics[$key]['latest_post'] = $this->load_latest_post($topic['topic_id']);
+            }
+            return $topics;
+        }
         else return false;
+    }
+    
+    private function load_latest_post($id) {
+        $joins = $this->db_wrapper->build_joins('INNER', array('users__users', 'u'), array('user_id', 'p.created_by'));
+        $post = $this->db_wrapper->select_data(array('forum__posts', 'p'), array(
+            'p.post_date',
+            "CONCAT(u.user_first_name, ' ', u.user_last_name) AS username",
+            'p.post_id'
+        ), 'p.topic_id = ' . $id, 1, 'p.post_date DESC', null, $joins);
+        if(is_array($post)) $post = array_flat($post);
+        return $post;
     }
     
     public function load_topic_posts() {
