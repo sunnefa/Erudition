@@ -13,6 +13,7 @@ if(isset($_POST['form'])) {
         case 'new_topic_form':
             break;
         case 'new_post_form':
+            include ROOT . 'modules/forum/add_post.php';
             break;
         default:
             break;

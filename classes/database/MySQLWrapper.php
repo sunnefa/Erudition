@@ -29,7 +29,7 @@ class MySQLWrapper extends DBWrapper {
      * The sql query for inserting data into the database
      * @var string 
      */
-    private $insert_statement = "INSERT INTO {TABLE_NAME} ({FIELDS}) VALUES('{VALUES}')";
+    private $insert_statement = 'INSERT INTO {TABLE_NAME} ({FIELDS}) VALUES("{VALUES}")';
     
     /**
      * The sql query for updating data in the database
@@ -114,12 +114,11 @@ class MySQLWrapper extends DBWrapper {
     public function insert_data($table_name, $fields_data){
         $fields_data = $this->sanity($fields_data);
         $fields = implode(', ', array_keys($fields_data));
-        $data = implode("', '", $fields_data);
+        $data = implode('", "', $fields_data);
         
         $statement = replace_tokens($this->insert_statement, array('TABLE_NAME' => $table_name, 'FIELDS' => $fields, 'VALUES' => $data));
         
         $success = $this->execute($statement);
-        
         return $success;
     }
     
@@ -232,11 +231,18 @@ class MySQLWrapper extends DBWrapper {
         if(is_array($data)) {
             $returning = array();
             foreach($data as $key => $piece) {
+                if(get_magic_quotes_gpc()) {
+                    $key = stripslashes($key);
+                    $piece = stripslashes($piece);
+                }
                 $san_key = mysql_real_escape_string($key, $this->conn);
                 $san_piece = mysql_real_escape_string($piece, $this->conn);
                 $returning[$san_key] = $san_piece;
             }
         } else {
+            if(get_magic_quotes_gpc()) {
+		$data = stripslashes($data);	
+            }
             $returning = mysql_real_escape_string($data, $this->conn);
         }
         return $returning;
