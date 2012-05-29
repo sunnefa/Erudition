@@ -19,6 +19,7 @@ class Topic {
     public $topic_started_by;
     public $topic_date;
     public $topic_posts;
+    public $total_posts;
     
     protected $db_wrapper;
 
@@ -32,7 +33,14 @@ class Topic {
     }
     
     private function select_topic($id) {
-        $topic = $this->db_wrapper->select_data('forum__topics', '*', 'topic_id = ' . $id);
+        $topic = $this->db_wrapper->select_data('forum__topics', array(
+            'topic_id',
+            'topic_title',
+            'topic_date',
+            'topic_section',
+            'topic_started_by',
+            '(SELECT COUNT(forum__posts.post_id) FROM forum__posts WHERE forum__posts.topic_id = forum__topics.topic_id) AS total_posts'
+        ), 'topic_id = ' . $id);
         
         if($topic) {
             $topic = array_flat($topic);
@@ -41,6 +49,7 @@ class Topic {
             $this->topic_section = $topic['topic_section'];
             $this->topic_started_by = $topic['topic_started_by'];
             $this->topic_title = $topic['topic_title'];
+            $this->total_posts = $topic['total_posts'];
         } else {
             echo 'No topic found';
         }
@@ -48,6 +57,7 @@ class Topic {
     
     public function load_multiple_topics($section = null) {
         $joins = $this->db_wrapper->build_joins('LEFT', array('users__users','u'), array('user_id', 't.topic_started_by'));
+        //$joins2 = $this->db_wrapper->build_joins('LEFT', array('forum__posts', 'p'), array('p.topic_id', 't.topic_id'));
         $where = ($section != null) ? 'topic_section = ' . $section : '';
         $topics = $this->db_wrapper->select_data(array('forum__topics','t'), array(
             't.topic_id',
@@ -55,6 +65,7 @@ class Topic {
             't.topic_started_by',
             't.topic_date',
             't.topic_section',
+            '(SELECT COUNT(p.post_id) FROM forum__posts AS p WHERE t.topic_id = p.topic_id)  AS total_posts',
             "CONCAT(u.user_first_name, ' ', u.user_last_name) AS user_name"
         ), $where, null, null, 't.topic_id', $joins);
         if($topics) {
@@ -95,9 +106,20 @@ class Topic {
             'created_by' => $user_id,
             'topic_id' => $topic_id
         ));
-        if($added) return true;
+        if($added) return $this->db_wrapper->get_insert_id();
         else return false;
     } 
+    
+    public function add_topic($user_id, $section_id, $topic_title, $date) {
+        $added = $this->db_wrapper->insert_data('forum__topics', array(
+            'topic_title' => $topic_title,
+            'topic_started_by' => $user_id,
+            'topic_section' => $section_id,
+            'topic_date' => $date
+        ));
+        if($added) return $this->db_wrapper->get_insert_id();
+        else return false;
+    }
 }
 
 ?>

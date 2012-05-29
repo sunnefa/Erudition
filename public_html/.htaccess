@@ -10,6 +10,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQEUST_FILENAME} !-d
 RewriteRule ^community/([a-zA-Z]+)/$ index.php?page=community&part=$1
 RewriteRule ^community/([a-zA-Z]+)/([0-9]+)/$ index.php?page=community&part=$1&id=$2
+RewriteRule ^community/([a-zA-Z]+)/([0-9]+)/page-([0-9])/$ index.php?page=community&part=$1&id=$2&p=$3
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !([a-z0-9A-Z]+)/$

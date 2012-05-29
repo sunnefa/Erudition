@@ -620,3 +620,25 @@ table#forum td.date, table#forum td.post_title {
     font-size:10px;
     text-align: center;
 }
+
+/* forum pagination */
+.pagination {
+    border:1px solid #ccc;
+    font-weight:bold;
+    color: #aaa;
+    margin:5px;
+    padding:5px;
+    font-size:12px;
+}
+
+a.pagination {
+    font-weight:normal;
+    text-decoration:none;
+}
+a.pagination:visited {
+    color:#999;
+}
+a.pagination:hover {
+    color:#000;
+    border-color:#000;
+}

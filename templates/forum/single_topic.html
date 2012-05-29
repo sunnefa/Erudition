@@ -10,19 +10,5 @@
     </thead>
     {POST_LIST}
 </table>
-
-<div>
-    <a name="reply"></a>
-    <h3>Reply to {TOPIC_TITLE}</h3>
-    <form action="index.php" method="post">
-        <label for="post_title">Post title:</label>
-        <input type="text" name="post_title" id="post_title" size="22" />
-        <label for="post_content">Content:</label>
-        <textarea name="post_content" id="post_content">
-
-        </textarea>
-        <input type="hidden" name="form" value="new_post_form" />
-        <input type="hidden" name="topic_id" value="{TOPIC_ID}" />
-        <div><button class="grey" type="submit">Reply</button></div>
-    </form>
-</div>
+<p>{PAGINATION}</p>
+{NEW_POST_FORM}

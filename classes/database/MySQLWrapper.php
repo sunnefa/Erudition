@@ -247,6 +247,13 @@ class MySQLWrapper extends DBWrapper {
         }
         return $returning;
     }
+    /**
+     * Returns the id the item that was last inserted into the database
+     * @return int 
+     */
+    public function get_insert_id() {
+        return mysql_insert_id($this->conn);
+    }
 }
 
 ?>

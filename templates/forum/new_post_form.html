@@ -1,0 +1,13 @@
+<div>
+    <a name="reply"></a>
+    <h3>{NEW_POST_HEADLINE}</h3>
+    <form action="index.php" method="post">
+        <label for="post_title">Title:</label>
+        <input type="text" name="post_title" id="post_title" size="22" />
+        <label for="post_content">Content:</label>
+        <textarea name="post_content" id="post_content"></textarea>
+        <input type="hidden" name="form" value="new_post_form" />
+        <input type="hidden" name="{NAME_OF_ID}" value="{ID_TO_SEND}" />
+        <div><button class="grey" type="submit">Submit</button></div>
+    </form>
+</div>

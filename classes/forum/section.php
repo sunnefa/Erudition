@@ -41,9 +41,6 @@ class Section {
     }
     
     private function load_latest_post($section_id) {
-        /*
-         * SELECT p.topic_id, p.post_date, CONCAT(u.user_first_name, ' ', u.user_last_name) AS username, t.topic_id, t.topic_title FROM forum__sections AS s LEFT JOIN forum__topics AS t ON t.topic_section = s.section_id LEFT JOIN forum__posts AS p ON p.topic_id = t.topic_id LEFT JOIN users__users AS u ON u.user_id = p.created_by WHERE s.section_id = 1 GROUP BY p.post_id ORDER BY p.post_date DESC LIMIT 1
-         */
         $topics_sections_join = $this->db_wrapper->build_joins('INNER', array('forum__topics', 't'), array('t.topic_section', 's.section_id'));
         $posts_topics_join = $this->db_wrapper->build_joins('INNER', array('forum__posts', 'p'), array('p.topic_id', 't.topic_id'));
         $users_posts_join = $this->db_wrapper->build_joins('INNER', array('users__users', 'u'), array('u.user_id', 'p.created_by'));
@@ -52,7 +49,8 @@ class Section {
             "CONCAT(u.user_first_name, ' ', u.user_last_name) AS username",
             't.topic_id',
             't.topic_title',
-            'p.post_id'
+            'p.post_id',
+            '(SELECT COUNT(a.post_id) FROM forum__posts AS a WHERE a.topic_id = t.topic_id) AS total_posts'
         ), 's.section_id = ' . $section_id, 1, 'p.post_date DESC', 'p.post_id', $topics_sections_join . ' ' . $posts_topics_join . ' ' . $users_posts_join);
         if(is_array($post)) $post = array_flat($post);
         

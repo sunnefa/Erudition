@@ -23,8 +23,9 @@ if(is_logged_in()) {
                 if(!is_array($section['latest_post'])) {
                     $latest_post_html = 'No topics';
                 } else {
+                    $last_page = ceil($section['latest_post']['total_posts'] / 15);
                     $latest_post_html = <<<EOT
-                   <a href="community/topic/{$section['latest_post']['topic_id']}/#post-{$section['latest_post']['post_id']}">{$section['latest_post']['topic_title']}</a> by {$section['latest_post']['username']} on {$section['latest_post']['post_date']} 
+                   <a href="community/topic/{$section['latest_post']['topic_id']}/page-$last_page/#post-{$section['latest_post']['post_id']}">{$section['latest_post']['topic_title']}</a> by {$section['latest_post']['username']} on {$section['latest_post']['post_date']} 
 EOT;
                 }
                 $section_list .= replace_tokens(ob_get_clean(), array('SECTION_ID' => $section['section_id'], 'SECTION_TITLE' => $section['section_title'], 'SECTION_DESC' => $section['section_description'], 'LATEST_POST' => $latest_post_html));
