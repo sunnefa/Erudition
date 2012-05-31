@@ -1,13 +1,25 @@
 {BREADCRUMBS}
+<p class="one-half last"><button class="orange" onclick="window.location.hash='reply'">New topic</button></p>
+<div style="clear:both;"></div>
+<div id="forum-container">
 <h1>{SECTION_TITLE}</h1>
-<button class="grey" onclick="window.location.hash='reply'">New topic</button>
+
 <table id="forum">
     <thead>
         <tr>
-            <th>Topic title</th>
-            <th class="latest">Latest post:</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th class="num-topics">Posts</th>
+            <th class="latest">Latest post</th>
         </tr>
     </thead>
     {TOPIC_LIST}
+    <tfoot>
+        <tr>
+            <th colspan="4">&nbsp;</th>
+        </tr>
+    </tfoot>
 </table>
+
 {NEW_TOPIC_FORM}
+</div>

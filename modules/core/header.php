@@ -4,8 +4,10 @@ $nav_text = "";
 foreach($navigation as $nav) {
     $not_in_header = array('trek_quiz', 'contact', 'logout');
     if(is_logged_in()) {
-        array_push($not_in_header, 'signup', 'login');
+        array_push($not_in_header, 'signup', 'login', 'faq', 'terms', 'about');
         unset($not_in_header[2]);
+    } else {
+        array_push($not_in_header, 'community', 'courses');
     }
     if(!in_array($nav['page_name'], $not_in_header)) {
         ob_start();

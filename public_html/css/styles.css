@@ -585,24 +585,30 @@ nav a:hover {
 }
 
 /* Forum rules */
+div#forum-container {
+    background-color:#fef9f9;
+    padding:15px;
+    border:1px solid #efbdba;
+}
+
 table#forum {
     width:900px;
-    border:1px solid #000;
     font: 14px/1.8 'Lucida Grande', 'Lucida Sans Unicode', sans-serif; 
 }
 
 table#forum tbody {
-    border: 1px solid #000;
 }
 
 table#forum tbody:nth-child(odd) {
-    background-color:#ff0;
+    background-color:#fff;
 }
 table#forum tbody:nth-child(even) {
-    background-color:#0ff;
+    background-color:#f9c1be;
 }
-table#forum thead tr {
-    background-color: #f00;
+table#forum thead tr, table#forum tfoot tr {
+    background-color: #ef4036;
+    color:#fff;
+    text-transform: uppercase;
 }
 
 table#forum tr td {
@@ -611,14 +617,69 @@ table#forum tr td {
 }
 
 table#forum td.latest, table#forum th.latest {
-    width:25%;
+    width:30%;
     text-align:center;
-    border:1px solid #000;
+    vertical-align: middle;
+}
+
+table#forum td.latest p {
+    margin:0;
+}
+
+table#forum td.num-topics, table#forum th.num-topics {
+    text-align: center;
+    color:#000;
+    border:1px solid #ef4036;
+    border-top:none;
+    border-bottom:none;
+    vertical-align: middle;
+}
+table#forum th.num-topics {
+    color:#fff;
 }
 
 table#forum td.date, table#forum td.post_title {
     font-size:10px;
     text-align: center;
+}
+
+table#forum .notes {
+    width:40px;
+    height:33px;
+    background: url('../img/note.png') no-repeat center;
+}
+table#forum .sherlock {
+    width:32px;
+    height:20px;
+    background: url('../img/sherlock.png') no-repeat center;
+}
+table#forum h3 {
+    color: #c0332b;
+    font-size:18px;
+    font-weight: normal;
+    margin:0;
+    padding:0;
+}
+table#forum h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+table#forum h3 a:hover {
+    color:#c0332b;
+    text-decoration: underline;
+}
+
+a.glowing, a.non-glowing {
+    display:inline-block;
+    width:25px;
+    height:15px;
+}
+a.glowing {
+    background:url('../img/glowing-sherlock.png') no-repeat center;
+}
+
+a.non-glowing {
+    background:url('../img/normal-sherlock.png') no-repeat center;
 }
 
 /* forum pagination */

@@ -58,7 +58,12 @@ class Section {
     }
     
     public function select_multiple_sections() {
-        $sections = $this->db_wrapper->select_data('forum__sections', '*');
+        $sections = $this->db_wrapper->select_data('forum__sections', array(
+            'section_id',
+            'section_title',
+            'section_description',
+            '(SELECT COUNT(forum__topics.topic_id) FROM forum__topics WHERE forum__topics.topic_section = forum__sections.section_id) AS num_topics'
+        ));
         
         if($sections) {
             foreach($sections as $key => $section) {
