@@ -708,8 +708,54 @@ a.pagination:hover {
 .lesson_container {
     background-color:#fef9f9;
     padding:15px;
-    border:1px solid #efbdba;
+    border:1px solid #fac5c2;
     width:60%;
+    float:left;
+}
+
+.wide {
+    width:100%;
+}
+
+div.chapter-sidebar {
+    width:35%;
+    float:right;
+    background-color: #fffdfd;
+    border:1px solid #fac5c2;
+}
+
+div.chapter-sidebar ul {
+    list-style:none;
+}
+
+div.chapter-sidebar ul li ul.chapter-list li:before {
+   content: "\00BB";
+}
+
+div.chapter-sidebar ul li.head {
+    background-color: #f79e99;
+    margin:0;
+    padding:10px 40px;
+    color:#fff;
+    font-size:16px;
+}
+
+div.chapter-sidebar ul li.all, div.chapter-sidebar ul li.quiz, div.chapter-sidebar ul li.current-lesson {
+    background-color:#f79e99;
+    background-position: 5px;
+    background-repeat: no-repeat;
+}
+
+div.chapter-sidebar ul li.all {
+    background-image:url('../img/all-lessons.png');
+}
+
+div.chapter-sidebar ul li.quiz {
+    background-image:url('../img/take-quiz.png');
+}
+
+div.chapter-sidebar ul li.current-lesson {
+    background-image:url('../img/current-lesson.png');
 }
 
 .lesson_container video {

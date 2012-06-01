@@ -1,3 +1,4 @@
+{BREADCRUMBS}
 <div class="lesson_container">
     <h1>{CHAPTER_TITLE}</h1>
     <p>
@@ -7,4 +8,25 @@
         </video>
     </p>
     {CHAPTER_TRANSCRIPT}
+</div>
+<div class="chapter-sidebar">
+    <ul>
+        <li class="head current-lesson">Current lesson</li>
+        <li>
+            <p>{LESSON_TITLE}</p>
+            <ul class="chapter-list">
+                {CHAPTER_LIST}
+            </ul>
+        </li>
+        <li class="head quiz">Quiz</li>
+        <li>
+            <p><a href="quiz/{QUIZ_ID}/">Take the lesson quiz</a></p>
+        </li>
+        <li class="head all">All lessons</li>
+        <li>
+            <ul class="chapter-list">
+                {LESSON_LIST}
+            </ul>
+        </li>
+    </ul>
 </div>

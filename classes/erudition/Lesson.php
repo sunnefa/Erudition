@@ -11,6 +11,7 @@ class Lesson {
     public $previous_lesson;
     public $lesson_quiz;
     public $lesson_num_chapters;
+    public $lesson_description;
     
     protected $db_wrapper;
     
@@ -29,6 +30,7 @@ class Lesson {
             'lesson_quiz',
             'lesson_title',
             'previous_lesson',
+            'lesson_description',
             '(SELECT COUNT(erudition__chapters.chapter_id) FROM erudition__chapters WHERE erudition__chapters.chapter_lesson = erudition__lessons.lesson_id) AS lesson_num_chapters'
         ), 'lesson_id = ' . $lesson_id);
         if($lesson) {
@@ -39,6 +41,7 @@ class Lesson {
             $this->lesson_title = $lesson['lesson_title'];
             $this->previous_lesson = $lesson['previous_lesson'];
             $this->lesson_num_chapters = $lesson['lesson_num_chapters'];
+            $this->lesson_description = $lesson['lesson_description'];
         } else {
             echo 'No lesson found';
         }
@@ -54,6 +57,7 @@ class Lesson {
             'lesson_quiz',
             'lesson_title',
             'previous_lesson',
+            'lesson_description',
             '(SELECT COUNT(erudition__chapters.chapter_id) FROM erudition__chapters WHERE erudition__chapters.chapter_lesson = erudition__lessons.lesson_id) AS lesson_num_chapters'
         ), null, $limit);
         

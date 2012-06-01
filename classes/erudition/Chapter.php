@@ -36,7 +36,7 @@ class Chapter {
             $chapter = array_flat($chapter);
             $this->chapter_id = $chapter['chapter_id'];
             $this->chapter_title = $chapter['chapter_title'];
-            $this->chapter_lesson = $chapter['chapter_title'];
+            $this->chapter_lesson = $chapter['chapter_lesson'];
             $this->chapter_transcript = $chapter['chapter_transcript'];
             $this->chapter_video = $chapter['chapter_video'];
             $this->previous_chapter = $chapter['previous_chapter'];
@@ -45,11 +45,8 @@ class Chapter {
         }
     }
     
-    public function select_multiple_chapters($number = 'all') {
-        if(is_int($number)) $limit = $number;
-        else $limit = null;
-        
-        $chapters = $this->db_wrapper->select_data('erudition__chapters', '*', null, $limit);
+    public function select_multiple_chapters($lesson_id) {
+        $chapters = $this->db_wrapper->select_data('erudition__chapters', '*', 'chapter_lesson = ' . $lesson_id);
         if($chapters) return $chapters;
         else echo 'No chapters found';
     }
