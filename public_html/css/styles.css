@@ -703,3 +703,18 @@ a.pagination:hover {
     color:#000;
     border-color:#000;
 }
+
+/* Lesson rules */
+.lesson_container {
+    background-color:#fef9f9;
+    padding:15px;
+    border:1px solid #efbdba;
+    width:60%;
+}
+
+.lesson_container video {
+    width:85%;
+    display:block;
+    margin:0 auto;
+    height:auto;
+}
