@@ -1,5 +1,5 @@
 <?php
-if(!isset($_GET['quiz_id'])) {
+if(!isset($_GET['id'])) {
     $quiz = new Quiz($sql);
     
     $all_quizzes = $quiz->select_multiple_quizzes();
@@ -18,7 +18,7 @@ if(!isset($_GET['quiz_id'])) {
     
     echo replace_tokens($quiz_content, array('QUIZ_LIST' => $quiz_list));
 } else {
-    $quiz = new Quiz($sql, $_GET['quiz_id']);
+    $quiz = new Quiz($sql, $_GET['id']);
     $questions = $quiz->select_questions(false);
     if(!isset($_GET['submit'])) {
 
