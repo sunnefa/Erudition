@@ -105,8 +105,9 @@ class Page {
             $this->page_name = $page['page_name'];
             
             $this->page_meta_description = $page['page_meta_description'];
+            return true;
         } else {
-            echo 'No page found';
+            return false;
         }
     }
     

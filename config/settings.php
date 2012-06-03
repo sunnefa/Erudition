@@ -25,4 +25,13 @@ define('MYSQL_PASS', 'erudition');
  */
 define('ROOT', dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
 
+/**
+ * Turn error showing off 
+ */
+ini_set('display_errors', false);
+/**
+ * Set an error handler to log errors 
+ */
+set_error_handler('erudition_errors', E_ERROR);
+
 ?>

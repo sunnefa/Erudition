@@ -174,9 +174,33 @@ function is_email_address($email) {
     return false;
 }
 
+/**
+ * Checks if a session or cookie is set, which means a user is logged in
+ * @return boolean 
+ */
 function is_logged_in() {
     if(isset($_SESSION['user']) || isset($_COOKIE['user'])) return true;
     else return false;
+}
+
+function erudition_errors($error_code, $error_desc, $file, $line) {
+    @ob_end_clean();
+    $message = <<<EOT
+    The following error occured in $file on line $line: \r\n
+        Error $error_code: $error_desc\r\n
+        \r\n 
+EOT;
+    if(function_exists('error_log')) {
+        error_log($message, 3, 'error_log');
+    } else {
+        if(file_exists('error_log')) {
+            $contents = file_get_contents('error_log');
+            file_put_contents('error_log', $contents . $message);
+        } else {
+            file_put_contents('error_log', $message);
+        }
+    }
+    reload('404/');
 }
 
 ?>

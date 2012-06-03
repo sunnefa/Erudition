@@ -2,7 +2,7 @@
 $navigation = $page->select_multiple_pages();
 $nav_text = "";
 foreach($navigation as $nav) {
-    $not_in_header = array('quiz', 'contact', 'logout', 'forgotten');
+    $not_in_header = array('quiz', 'contact', 'logout', 'forgotten', '404');
     if(is_logged_in()) {
         array_push($not_in_header, 'signup', 'login', 'faq', 'terms', 'about');
         unset($not_in_header[2]);

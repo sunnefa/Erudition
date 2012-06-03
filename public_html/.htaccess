@@ -21,3 +21,5 @@ RewriteRule ^quiz/([0-9]+)/$ index.php?page=quiz&id=$1
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !([a-z0-9A-Z]+)/$
 RewriteRule ^([a-z0-9A-Z]+)$ $1/ [L,R=301]
+
+ErrorDocument 404 /Erudition/public_html/404/
