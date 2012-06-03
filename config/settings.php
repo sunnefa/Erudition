@@ -1,8 +1,7 @@
 <?php
 
 /**
- * The MySQL username, password and database name
- * TODO: Change the password to something secure 
+ * The MySQL database username
  */
 define('MYSQL_USER', 'erudition');
 
@@ -11,6 +10,19 @@ define('MYSQL_USER', 'erudition');
  */
 define('MYSQL_HOST', 'localhost');
 
+/**
+ * The MySQL database name 
+ */
+define('MYSQL_DATA', 'erudition');
+
+/**
+ * The MySQL database password 
+ */
+define('MYSQL_PASS', 'erudition');
+
+/**
+ * The root directory 
+ */
 define('ROOT', dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
 
 ?>

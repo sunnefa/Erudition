@@ -1,12 +1,17 @@
 <h1>{QUIZ_TITLE}</h1>
 <p>{QUIZ_DESCRIPTION}</p>
-<form action="?quiz_id={QUIZ_ID}&amp;submit=true" method="post" id="take_quiz">
+<p class="{MESSAGE_CLASS}">{QUIZ_MESSAGE}</p>
+<form action="index.php" method="post" id="take_quiz">
 <ul>
     {QUESTION_LIST}
 </ul>
-    <input type="hidden" name="quiz_process" id="quiz_process" value="?quiz_id={QUIZ_ID}&amp;submit=true" />
-    <div>
+    <input type="hidden" name="form" id="form" value="quiz_form" />
+    <input type="hidden" name="quiz_id" id="quiz_id" value="{QUIZ_ID}" />
+    <div class="one-half">
         <button class="orange" {DISABLED} type="submit">Submit</button>
         <div class="loading"></div><!-- Ajax or whatever loader -->
+    </div>
+    <div class="one-half last">
+        <a class="{RETAKE}" href="quiz/{QUIZ_ID}/">Retake quiz</a>
     </div>
 </form>

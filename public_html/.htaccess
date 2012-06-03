@@ -6,11 +6,13 @@ RewriteCond ${REQUEST_FILENAME} !-d
 #home page rules
 RewriteRule ^([a-z0-9A-Z]+)/$ index.php?page=$1
 RewriteRule ^$ index.php?page=home [L]
-#community rule
+#registration rules
+RewriteRule ^signup/activation=([a-zA-Z0-9]+)/$ index.php?page=signup&activation=$1
+#community rules
 RewriteRule ^community/([a-zA-Z]+)/$ index.php?page=community&part=$1
 RewriteRule ^community/([a-zA-Z]+)/([0-9]+)/$ index.php?page=community&part=$1&id=$2
 RewriteRule ^community/([a-zA-Z]+)/([0-9]+)/page-([0-9])/$ index.php?page=community&part=$1&id=$2&p=$3
-#course rule
+#course rules
 RewriteRule ^courses/([a-zA-Z]+)/$ index.php?page=courses&part=$1
 RewriteRule ^courses/([a-zA-Z]+)/([0-9]+)/$ index.php?page=courses&part=$1&id=$2
 #quiz rules

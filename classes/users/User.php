@@ -150,19 +150,21 @@ class User {
                     $this->assign_values_to_properties($user);
 
                     $online = $this->db_wrapper->update_data('users__users', array('user_is_online' => '1'), 'user_id = ' . $user['user_id']);
+                    
+                    $last_logged_in_date = $this->db_wrapper->update_data('users__users', array('user_last_logged_in_date' => date('Y-m-d H:i:s')), 'user_id = ' . $user['user_id']);
 
                     set_cookies('user', $user['user_id']);
                     set_session('user', $user['user_id']);
                     return true;
-                } else {
+                } else { //return false for inactive user
                     return false;
                 }
                 
-            } else {
+            } else { //return false for failed password
                 return false;
             }
             
-        } else {
+        } else { //return false for no user found
             return false;
         }
     }
@@ -266,7 +268,7 @@ class User {
         $message = <<<EOT
         <p>Hi $first_name $last_name!</p>
             <p>Welcome to Erudition. This email is the first on your journey to become an Erudite. Before you can login, we need to verify your account. Please click the link below to activate your account and login to start enjoying our courses and becoming an Erudite of the highest quality.</p>
-            <p><a href="$url/signup/?activation=$activation_key">Activate my account!</a></p>
+            <p><a href="$url/signup/activation=$activation_key/">Activate my account!</a></p>
                 <p>Best regards,</p>
                 <p>The Erudition team</p>
 EOT;

@@ -120,8 +120,10 @@ class Page {
             $this->page_modules[] = new Module($this->db_wrapper, $module['module_id']);
         }
     }
+    
     /**
-     * TODO: Select multiple pages 
+     * Returns all pages
+     * @return mixed 
      */
     public function select_multiple_pages() {
         $pages = $this->db_wrapper->select_data('pages__pages', '*');

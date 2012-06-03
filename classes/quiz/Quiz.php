@@ -79,7 +79,6 @@ class Quiz {
     
     /**
      * Select multiple quizzes, either all or a number specified
-     * TODO: Make sure that there are actually quizzes returned, use mysql_num_rows
      * @param mixed $quantity 
      * @return mixed
      */
@@ -92,7 +91,11 @@ class Quiz {
             $quizzes = 'Invalid argument';
         }
         
-        return $quizzes;
+        if($quizzes) {
+            return $quizzes;
+        } else {
+            echo 'No quizzes found';
+        }
     }
     
     /**

@@ -196,7 +196,7 @@ class MySQLWrapper extends DBWrapper {
         }
         
         $statement = replace_tokens($this->update_statement, array('TABLE_NAME' => $table_name, 'FIELDS' => $field_string, 'WHERE' => $where));
-        echo $statement;
+        //echo $statement;
         $success = $this->execute($statement);
         
         return $success;

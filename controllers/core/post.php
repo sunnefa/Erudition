@@ -9,6 +9,7 @@ if(isset($_POST['form'])) {
             include ROOT . 'modules/users/reg_proc.php';
             break;
         case 'quiz_form':
+            include ROOT . 'modules/quiz/quiz_proc.php';
             break;
         case 'new_topic_form':
             break;

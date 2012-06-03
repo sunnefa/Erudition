@@ -15,14 +15,12 @@ function __autoload($class_name) {
 
 /**
  * Replaces tokens in a given string with replacements given
- * TODO: Decide wether to use str_replace or preg_replace
  * @param string $text
  * @param array $tokens_replacements
  * @return string 
  */
 function replace_tokens($text, $tokens_replacements) {
     foreach($tokens_replacements as $token => $replacement) {
-        //$text = str_replace('{' . $token . '}', $replacement, $text);
         $text = preg_replace('(\{' . $token . '\})', $replacement, $text);
     }
     
