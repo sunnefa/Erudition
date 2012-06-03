@@ -2,7 +2,7 @@
 $navigation = $page->select_multiple_pages();
 $nav_text = "";
 foreach($navigation as $nav) {
-    $not_in_footer = array('trek_quiz', 'home', 'signup', 'login', 'community', 'logout', 'courses');
+    $not_in_footer = array('quiz', 'home', 'signup', 'login', 'community', 'logout', 'courses', 'forgotten');
     if(!in_array($nav['page_name'], $not_in_footer)) {
         ob_start();
         include ROOT . 'templates/core/navigation.html';

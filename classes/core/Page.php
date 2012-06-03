@@ -78,7 +78,7 @@ class Page {
             
             $this->page_name = $page['page_name'];
             
-            $this->page_meta = $page['page_meta_description'];
+            $this->page_meta_description = $page['page_meta_description'];
         } else {
             echo 'No page found';
         }
@@ -104,7 +104,7 @@ class Page {
             
             $this->page_name = $page['page_name'];
             
-            $this->page_meta = $page['page_meta_description'];
+            $this->page_meta_description = $page['page_meta_description'];
         } else {
             echo 'No page found';
         }

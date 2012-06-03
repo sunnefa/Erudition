@@ -2,7 +2,7 @@
 $navigation = $page->select_multiple_pages();
 $nav_text = "";
 foreach($navigation as $nav) {
-    $not_in_header = array('trek_quiz', 'contact', 'logout');
+    $not_in_header = array('quiz', 'contact', 'logout', 'forgotten');
     if(is_logged_in()) {
         array_push($not_in_header, 'signup', 'login', 'faq', 'terms', 'about');
         unset($not_in_header[2]);
@@ -18,5 +18,10 @@ foreach($navigation as $nav) {
 }
 ob_start();
 include ROOT . 'templates/core/header.html';
-echo replace_tokens(ob_get_clean(), array('NAV' => $nav_text));
+echo replace_tokens(ob_get_clean(), array('NAV' => $nav_text, 'META_DESCRIPTION' => $page->page_meta_description, 'TITLE' => $page->page_title));
+
+/**
+ * TODO: Add a 404 page
+ * TODO: Create the account recovery page 
+ */
 ?>
