@@ -20,11 +20,15 @@ if(!isset($_GET['id'])) {
     <a href="community/">Community</a> &GT; $section->section_title
 </p>
 EOT;
+            //show the new topic form at the bottom of the page
+        ob_start();
+        include ROOT . 'templates/forum/new_post_form.html';
+        $post_form_html = replace_tokens(ob_get_clean(), array('TOPIC_ID' => "", 'NEW_POST_HEADLINE' => 'Add new topic', 'NAME_OF_ID' => 'section_id', 'ID_TO_SEND' => $section->section_id));
     //if there are no topics in this section we don't need to loop through the topic list
     if(!$topics) {
         ob_start();
         include ROOT . 'templates/forum/single_section.html';
-        echo replace_tokens(ob_get_clean(), array('TOPIC_LIST' => '<tr><td>No topics found</td><td class="latest">&nbsp;</td></tr>', 'SECTION_TITLE' => $section->section_title, 'BREADCRUMBS' => $breadcrumbs));
+        echo replace_tokens(ob_get_clean(), array('TOPIC_LIST' => '<tr><td>No topics found</td><td class="latest">&nbsp;</td></tr>', 'SECTION_TITLE' => $section->section_title, 'BREADCRUMBS' => $breadcrumbs, 'NEW_TOPIC_FORM' => $post_form_html));
     } else {
         //loop through the topic list, if there are any topics
         $topic_list = '';
@@ -62,10 +66,6 @@ EOT;
             $topic_list .= replace_tokens(ob_get_clean(), array('TOPIC_ID' => $topic['topic_id'], 'TOPIC_TITLE' => $topic['topic_title'], 'TOPIC_STARTER' => $topic['user_name'], 'LATEST_POST' => $latest_post_html, 'PAGINATION' => $pagination, 'NUMBER_OF_POSTS' => $topic['total_posts']));
         }//end of topic list loop
         
-        //show the new topic form at the bottom of the page
-        ob_start();
-        include ROOT . 'templates/forum/new_post_form.html';
-        $post_form_html = replace_tokens(ob_get_clean(), array('TOPIC_ID' => "", 'NEW_POST_HEADLINE' => 'Add new topic', 'NAME_OF_ID' => 'section_id', 'ID_TO_SEND' => $section->section_id));
         ob_start();
         //includ the single section template
         include ROOT . 'templates/forum/single_section.html';

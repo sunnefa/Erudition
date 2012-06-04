@@ -43,6 +43,12 @@ class Chapter {
     public $previous_chapter;
     
     /**
+     * The id of the forum topic used to discuss this chapter
+     * @var int 
+     */
+    public $chapter_forum_topic;
+    
+    /**
      * A reference to DBWrapper
      * @var DBWrapper 
      */
@@ -76,6 +82,7 @@ class Chapter {
             $this->chapter_transcript = $chapter['chapter_transcript'];
             $this->chapter_video = $chapter['chapter_video'];
             $this->previous_chapter = $chapter['previous_chapter'];
+            $this->chapter_forum_topic = $chapter['chapter_forum_topic'];
         } else {
             echo 'No chapter found';
         }
