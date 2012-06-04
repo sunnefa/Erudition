@@ -16,10 +16,10 @@ foreach($navigation as $nav) {
         //if a user is logged in, these are not supposed to be in the header either
         array_push($not_in_header, 'signup', 'login', 'faq', 'terms', 'about');
         //except the logout page
-        unset($not_in_header[2]);
+        //unset($not_in_header[2]);
     } else {
         //when a user is not logged in, these are not supposed to show up
-        array_push($not_in_header, 'community', 'courses');
+        array_push($not_in_header, 'community', 'courses', 'resources', 'assignments');
     }
     //if the page is not in the $not_in_header array
     if(!in_array($nav['page_name'], $not_in_header)) {
@@ -32,9 +32,20 @@ foreach($navigation as $nav) {
         $nav_text .= replace_tokens(ob_get_clean(), array('LINK' => $nav['page_url'], 'LINK_NAME' => $nav['page_title'], 'CLASS' => $class));
     }
 }
+
+if(is_logged_in()) {
+    $logged_in_class = 'login_menu';
+    $user_id = (isset($_SESSION['e_user'])) ? $_SESSION['e_user'] : $_COOKIE['user'];
+    $user = new User($sql, $user_id);
+    $user_name = $user->user_first_name . ' ' . $user->user_last_name;
+} else {
+    $logged_in_class = 'invisible';
+    $user_name = '';
+}
+
 ob_start();
 //load the main header template
 include ROOT . 'templates/core/header.html';
 //echo it out and replace the template tokens
-echo replace_tokens(ob_get_clean(), array('NAV' => $nav_text, 'META_DESCRIPTION' => $page->page_meta_description, 'TITLE' => $page->page_title));
+echo replace_tokens(ob_get_clean(), array('NAV' => $nav_text, 'META_DESCRIPTION' => $page->page_meta_description, 'TITLE' => $page->page_title, 'USERNAME' => $user_name, 'LOGGED_IN_CLASS' => $logged_in_class));
 ?>

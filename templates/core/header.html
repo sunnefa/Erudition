@@ -46,7 +46,15 @@
 				<img src="img/logo.png" alt="Erudition...360 degrees E-learning" />
 			</div>	
 			<nav id="top">
-				<ul>
+                            <ul class="{LOGGED_IN_CLASS}">
+                                <li>
+                                    <a href="logout/">Logout</a>
+                                </li>
+                                <li>
+                                    <a href="#">{USERNAME}</a>
+                                </li>
+                            </ul>
+				<ul class="main">
 					{NAV}
 				</ul>	
 			</nav><!-- end #main-nav -->

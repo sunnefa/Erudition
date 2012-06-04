@@ -11,7 +11,7 @@ $nav_text = "";
 //loop through the navigation links
 foreach($navigation as $nav) {
     //these are not supposed to show in the footer navigation
-    $not_in_footer = array('quiz', 'home', 'signup', 'login', 'community', 'logout', 'courses', 'forgotten', '404');
+    $not_in_footer = array('quiz', 'home', 'signup', 'login', 'community', 'logout', 'courses', 'forgotten', '404', 'resources', 'assignments');
     //if the page is not in the $not_in_footer array
     if(!in_array($nav['page_name'], $not_in_footer)) {
         ob_start();

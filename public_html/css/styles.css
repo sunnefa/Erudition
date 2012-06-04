@@ -310,6 +310,26 @@ select, option {
 	margin: auto;
 }
 
+.erudites {
+	background-color:#fffdfd;
+	border:1px solid #fac5c2;
+	padding:10px;
+}
+
+.news {
+	background-color:#fef9f9;
+	border:1px solid #fac5c2;
+	padding:10px;
+}
+
+.news ul {
+	list-style:none;
+}
+
+.news ul li {
+	border-bottom: 1px solid #fcdddc;
+}
+
 ul.user_list {
     list-style: none;
 }
@@ -324,6 +344,10 @@ ul.user_list li.left {
 }
 
 ul.user_list li.right {
+    float:right;
+}
+
+.login_menu {
     float:right;
 }
 
@@ -391,7 +415,7 @@ ul.selling-points li {
 
 /* Navigation */
 nav#top {
-    margin:10px auto;
+    margin:30px auto 10px;
     border: 1px solid #FFF;
 }
 
@@ -404,6 +428,14 @@ nav#top ul li {
     margin:0 5px;
     float:left;
     text-align: center;
+}
+
+
+nav#top ul.main {
+    width:60%;
+    margin-top:70px;
+    float:right;
+    margin-right:-20px;
 }
 
 nav#footer {
