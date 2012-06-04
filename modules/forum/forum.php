@@ -35,7 +35,7 @@ if(is_logged_in()) {
                     $latest_post_html = 'No topics';
                 } else {
                     //variables needed for the latest post
-                    $user_id = (isset($_SESSION['user'])) ? $_SESSION['user'] : $_COOKIE['user'];
+                    $user_id = (isset($_SESSION['e_user'])) ? $_SESSION['e_user'] : $_COOKIE['user'];
                     $user = new User($sql, $user_id);
                     $last_page = ceil($section['latest_post']['total_posts'] / 15);
                     $link_class = (strtotime($user->user_last_logged_in_date) < strtotime($section['latest_post']['post_date'])) ? 'glowing' : 'non-glowing';

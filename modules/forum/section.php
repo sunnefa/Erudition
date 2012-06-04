@@ -34,7 +34,7 @@ EOT;
         $topic_list = '';
         foreach($topics as $topic) {
             //highligh the latest post if it's newer than the date the user last logged in
-            $user_id = (isset($_SESSION['user'])) ? $_SESSION['user'] : $_COOKIE['user'];
+            $user_id = (isset($_SESSION['e_user'])) ? $_SESSION['e_user'] : $_COOKIE['user'];
             $user = new User($sql, $user_id);
             $last_page = ceil($topic['total_posts'] / 15);
             $link_class = (strtotime($user->user_last_logged_in_date) < strtotime($topic['latest_post']['post_date'])) ? 'glowing' : 'non-glowing';

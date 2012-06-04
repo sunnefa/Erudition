@@ -185,7 +185,7 @@ function is_email_address($email) {
  * @return boolean 
  */
 function is_logged_in() {
-    if(isset($_SESSION['user']) || isset($_COOKIE['user'])) return true;
+    if(isset($_SESSION['e_user']) || isset($_COOKIE['user'])) return true;
     else return false;
 }
 

@@ -131,7 +131,7 @@ class User {
         
         $this->user_image .= md5(strtolower(trim($this->user_email)));
         
-        $this->user_image .= "?s=100&d=http://localhost/Erudition/public_html/img/default_user.png&r=g";
+        $this->user_image .= "?s=100&d=http://erudition.sunnefa-lind.net/img/default_user.png&r=g";
     }
     
     /**
@@ -155,7 +155,7 @@ class User {
                     $last_logged_in_date = $this->db_wrapper->update_data('users__users', array('user_last_logged_in_date' => date('Y-m-d H:i:s')), 'user_id = ' . $user['user_id']);
 
                     set_cookies('user', $user['user_id']);
-                    set_session('user', $user['user_id']);
+                    set_session('e_user', $user['user_id']);
                     return true;
                 } else { //return false for inactive user
                     return false;
@@ -203,7 +203,7 @@ class User {
             $this->build_gravatar_url();
     }
     
-    public function load_multiple_users($number = all, $order_by = 'user_id') {
+    public function load_multiple_users($number = 'all', $order_by = 'user_id') {
         $limit = (is_integer($number)) ? $number : '';
         
         $users = $this->db_wrapper->select_data('users__users', '*', null, $limit, $order_by);
@@ -214,7 +214,7 @@ class User {
         
                 $users[$key]['image'] .= md5(strtolower(trim($user['user_email'])));
         
-                $users[$key]['image'] .= "?s=100&d=http://localhost/Erudition/public_html/img/default_user.png&r=g";
+                $users[$key]['image'] .= "?s=100&d=http://erudition.sunnefa-lind.net/img/default_user.png&r=g";
             }
             return $users;
         } else {

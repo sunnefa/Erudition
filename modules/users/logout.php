@@ -6,7 +6,7 @@
  */
 
 //if there is a session, destroy it
-if(isset($_SESSION['user'])) {
+if(isset($_SESSION['e_user'])) {
    session_destroy(); 
 }
 //if there is a cookie, unset it

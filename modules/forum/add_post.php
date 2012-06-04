@@ -6,7 +6,7 @@
  */
 
 //get the user id of the logged in user
-$user_id = (isset($_SESSION['user'])) ? $_SESSION['user'] : $_COOKIE['user'];
+$user_id = (isset($_SESSION['e_user'])) ? $_SESSION['e_user'] : $_COOKIE['user'];
 
 //if there is a topic id posted, we want to add a post to that topic id
 if(isset($_POST['topic_id'])) {
