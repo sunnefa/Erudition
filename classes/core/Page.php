@@ -1,6 +1,7 @@
 <?php
 /**
- * Description of pages
+ * Represents a single page
+ * This class only has retrieve methods
  *
  * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
  */

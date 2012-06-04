@@ -1,5 +1,11 @@
 <?php
 /**
+ * Some important helper functions
+ * 
+ * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
+ */
+
+/**
  * Autoloads classes from the classes folder - ALL CLASSES MUST BE IN THE CLASSES FOLDER!!!
  * @param string $class_name 
  */

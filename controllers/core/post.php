@@ -1,5 +1,11 @@
 <?php
+/**
+ * The controller for all post requests
+ * 
+ * @author Sunnefa Lind <sunnefa_lind@hotmail.com> 
+ */
 
+//switch on the name of the form
 if(isset($_POST['form'])) {
     switch($_POST['form']) {
         case 'login_form':

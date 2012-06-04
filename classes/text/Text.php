@@ -1,6 +1,7 @@
 <?php
 /**
- * Description of Text
+ * An object representing a text module on a page
+ * The same page can have many texts but currently the same text can only be on one page. This class only has retrieve methods
  *
  * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
  */

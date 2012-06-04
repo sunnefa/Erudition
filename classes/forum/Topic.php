@@ -1,29 +1,65 @@
 <?php
-
-/*
- * This is Topic.php
- * Created on 28.5.2012
- * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
- */
-
 /**
- * Description of Topic
+ * Represents a single topic in the forum
+ * This object also has all posts in the forum
+ * Currently has create and retrieve methods only
  *
  * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
  */
 class Topic {
-    
+    /**
+     * The id of the topic
+     * @var int 
+     */
     public $topic_id;
+    
+    /**
+     * The title of the topic
+     * @var string 
+     */
     public $topic_title;
+    
+    /**
+     * The forum section the topic belongs to
+     * @var int
+     */
     public $topic_section;
+    
+    /**
+     * The user who started the topic
+     * @var int
+     */
     public $topic_started_by;
+    
+    /**
+     * The date the topic was started
+     * @var string
+     */
     public $topic_date;
+    
+    /**
+     * An array of all the posts in this topic
+     * @var array
+     */
     public $topic_posts;
+    
+    /**
+     * The total number of posts in the topic
+     * @var int
+     */
     public $total_posts;
     
+    /**
+     * A reference to DbWrapper
+     * @var type 
+     */
     protected $db_wrapper;
 
-
+    /**
+     * Construct, accepts DBWrapper and topic id
+     * @param DBWrapper $db_wrapper
+     * @param int $topic_id 
+     */
     public function __construct(DBWrapper $db_wrapper, $topic_id = 0) {
         $this->db_wrapper = $db_wrapper;
         
@@ -32,6 +68,10 @@ class Topic {
         }
     }
     
+    /**
+     * Select a single topic
+     * @param int $id 
+     */
     private function select_topic($id) {
         $topic = $this->db_wrapper->select_data('forum__topics', array(
             'topic_id',
@@ -55,9 +95,13 @@ class Topic {
         }
     }
     
+    /**
+     * Selects multiple topics, either all or only the ones in a particular section
+     * @param int $section
+     * @return boolean 
+     */
     public function load_multiple_topics($section = null) {
         $joins = $this->db_wrapper->build_joins('LEFT', array('users__users','u'), array('user_id', 't.topic_started_by'));
-        //$joins2 = $this->db_wrapper->build_joins('LEFT', array('forum__posts', 'p'), array('p.topic_id', 't.topic_id'));
         $where = ($section != null) ? 'topic_section = ' . $section : '';
         $topics = $this->db_wrapper->select_data(array('forum__topics','t'), array(
             't.topic_id',
@@ -77,6 +121,11 @@ class Topic {
         else return false;
     }
     
+    /**
+     * Loads the latest post in a topic
+     * @param int $id
+     * @return array
+     */
     private function load_latest_post($id) {
         $joins = $this->db_wrapper->build_joins('INNER', array('users__users', 'u'), array('user_id', 'p.created_by'));
         $post = $this->db_wrapper->select_data(array('forum__posts', 'p'), array(
@@ -88,6 +137,9 @@ class Topic {
         return $post;
     }
     
+    /**
+     * Loads all the posts in the current topic 
+     */
     public function load_topic_posts() {
         $posts = $this->db_wrapper->select_data('forum__posts', '*', 'topic_id = ' . $this->topic_id);
         if($posts) {
@@ -97,6 +149,15 @@ class Topic {
         }
     }
     
+    /**
+     * Adds a post to the current topic
+     * @param int $user_id
+     * @param string $post_title
+     * @param string $post_content
+     * @param string $date
+     * @param int $topic_id
+     * @return boolean 
+     */
     public function add_post($user_id, $post_title, $post_content, $date, $topic_id = 0) {
         if($topic_id == 0) $topic_id = $this->topic_id;
         $added = $this->db_wrapper->insert_data('forum__posts', array(
@@ -110,6 +171,14 @@ class Topic {
         else return false;
     } 
     
+    /**
+     * Adds a new topic to the database
+     * @param int $user_id
+     * @param int $section_id
+     * @param string $topic_title
+     * @param string $date
+     * @return boolean 
+     */
     public function add_topic($user_id, $section_id, $topic_title, $date) {
         $added = $this->db_wrapper->insert_data('forum__topics', array(
             'topic_title' => $topic_title,

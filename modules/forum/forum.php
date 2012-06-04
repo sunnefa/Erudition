@@ -1,4 +1,10 @@
 <?php
+/**
+ * Controller for the main forum
+ * 
+ * @author Sunnefa Lind <sunnefa_lind@hotmail.com> 
+ */
+
 //a user must be logged in to view this page
 if(is_logged_in()) {
     //the part that is shown
@@ -57,6 +63,7 @@ if(is_logged_in()) {
             echo $main_html;
             break;
     }
+    //if the user is not logged in
 } else {
     echo 'You do not have permission to view this page';
 }

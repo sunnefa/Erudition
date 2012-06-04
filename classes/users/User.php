@@ -1,6 +1,7 @@
 <?php
 /**
- * Description of User
+ * A generic user class
+ * This user class has create and retrieve methods only, as well as login methods
  *
  * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
  */

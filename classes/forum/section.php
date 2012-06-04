@@ -1,23 +1,46 @@
 <?php
-
-/*
- * This is section.php
- * Created on 28.5.2012
- * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
- */
-
 /**
- * Description of section
+ * Represents a single section in the forum
+ * This class currently only has retrieve methods
  *
  * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
  */
 class Section {
+    /**
+     * The id of the section
+     * @var int 
+     */
     public $section_id;
+    
+    /**
+     * The title of the section
+     * @var string 
+     */
     public $section_title;
+    
+    /**
+     * A description of the section
+     * @var string 
+     */
     public $section_description;
+    
+    /**
+     * The latest post in this section
+     * @var array
+     */
     public $latest_post;
+    
+    /**
+     * Reference to DBWrapper
+     * @var DBWrapper 
+     */
     protected $db_wrapper;
     
+    /**
+     * Construct
+     * @param DBWrapper $db_wrapper
+     * @param int $section_id 
+     */
     public function __construct(DBWrapper $db_wrapper, $section_id = 0) {
         $this->db_wrapper = $db_wrapper;
         
@@ -26,6 +49,10 @@ class Section {
         }
     }
     
+    /**
+     * Selects a single section
+     * @param int $id 
+     */
     private function select_section($id) {
         $section = $this->db_wrapper->select_data('forum__sections', '*', 'section_id = ' . $id);
         
@@ -40,6 +67,11 @@ class Section {
         else echo 'No section found';
     }
     
+    /**
+     * Loads the latest post in a section
+     * @param int $section_id
+     * @return array 
+     */
     private function load_latest_post($section_id) {
         $topics_sections_join = $this->db_wrapper->build_joins('INNER', array('forum__topics', 't'), array('t.topic_section', 's.section_id'));
         $posts_topics_join = $this->db_wrapper->build_joins('INNER', array('forum__posts', 'p'), array('p.topic_id', 't.topic_id'));
@@ -57,6 +89,10 @@ class Section {
         return $post;
     }
     
+    /**
+     * Loads multiple sections
+     * @return boolean/array
+     */
     public function select_multiple_sections() {
         $sections = $this->db_wrapper->select_data('forum__sections', array(
             'section_id',

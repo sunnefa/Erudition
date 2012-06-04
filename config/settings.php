@@ -1,4 +1,9 @@
 <?php
+/**
+ * This file defines some constants for database connection and paths and sets error reporting settings
+ * 
+ * @author Sunnefa Lind <sunnefa_lind@hotmail.com> 
+ */
 
 /**
  * The MySQL database username

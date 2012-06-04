@@ -1,6 +1,14 @@
 <?php
+/**
+ * The controller for the registration process
+ * 
+ * @author Sunnefa Lind <sunnefa_lind@hotmail.com> 
+ */
+
+//new user object
 $user = new User($sql);
 
+//values from the form (these are sanitized by the MySQL wrapper)
 $user_first_name = $_POST['first_name'];
 $user_last_name = $_POST['last_name'];
 $user_email = $_POST['email_address'];
@@ -41,24 +49,28 @@ if($user->email_exists($user_email)) {
     $valid[] = true;
 }
 
+//how many true's and how many false's
 $results = array_count_booleans($valid);
-
+//if there are any false values in the array we need to send some of the old values and an error message back
 if($results['false'] > 0) {
-    echo 'There are false values in this array';
     $_SESSION['messages']['reg_fail'] = 'Registration failed. Please correct all errors and try again.';
     $_SESSION['old_values'] = array(
         'first_name' => $user_first_name,
         'last_name' => $user_last_name,
         'email_address' => $user_email
     );
+//if al lthe values are correct we register the user
 } else {
     $registered = $user->register_user($user_first_name, $user_last_name, $user_email, md5($user_password));
     if(!$registered) {
+        //this is only if something went wrong in the database
         $_SESSION['messages']['reg_fail'] = "Something went wrong with creatin your account. An admin has been notified.";
     } else {
+        //registration was successful
         $_SESSION['messages']['reg_success'] = "Thank you for becoming an Erudite. Please check your email for instructions on how to activate your account";
     }
     
 }
+//reload the signup page
 reload('signup');
 ?>

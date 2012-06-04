@@ -1,13 +1,7 @@
 <?php
-
-/*
- * This is MySQLWrapper.php
- * Created on 11.5.2012
- * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
- */
-
 /**
- * Description of MySQLWrapper
+ * A database wrapper for MySQL
+ * Extends from DBWrapper and implements all the required methods as well as a few MySQL specific ones.
  *
  * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
  */

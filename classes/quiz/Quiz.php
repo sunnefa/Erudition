@@ -1,6 +1,7 @@
 <?php
 /**
- * Description of Quiz
+ * The quiz object represents a single quiz
+ * This class currently only has retrieve methods
  *
  * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
  */

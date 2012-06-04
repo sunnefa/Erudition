@@ -1,20 +1,65 @@
 <?php
 /**
- * Description of Lesson
+ * An object representing a single lesson
+ * This class only has retrieve methods
  *
  * @author Sunnefa Lind <sunnefa_lind@hotmail.com>
  */
 class Lesson {
+    
+    /**
+     * The id of the lesson
+     * @var int 
+     */
     public $lesson_id;
+    
+    /**
+     * The title of the lesson
+     * @var int 
+     */
     public $lesson_title;
+    
+    /**
+     * A path to the downloadable lesson files
+     * @var string 
+     */
     public $lesson_material;
+    
+    /**
+     * The id of the preceeding lesson
+     * @var int 
+     */
     public $previous_lesson;
+    
+    /**
+     * The id of the lesson quiz
+     * @var int 
+     */
     public $lesson_quiz;
+    
+    /**
+     * The number of chapters in this lesson
+     * @var int 
+     */
     public $lesson_num_chapters;
+    
+    /**
+     * A description of the lesson
+     * @var string
+     */
     public $lesson_description;
     
+    /**
+     * Reference to DBWrapper
+     * @var type 
+     */
     protected $db_wrapper;
     
+    /**
+     * Constructor, accepts DBWrapper and optional lesson id
+     * @param DBWrapper $db_wrapper
+     * @param type $lesson_id 
+     */
     public function __construct(DBWrapper $db_wrapper, $lesson_id = 0) {
         $this->db_wrapper = $db_wrapper;
         
@@ -23,6 +68,10 @@ class Lesson {
         }
     }
     
+    /**
+     * Selects a single lesson from the database
+     * @param int $lesson_id 
+     */
     private function select_lesson($lesson_id) {
         $lesson = $this->db_wrapper->select_data('erudition__lessons', array(
             'lesson_id',
@@ -47,6 +96,11 @@ class Lesson {
         }
     }
     
+    /**
+     * Selects multiple lessons from the database, either all or the specified number
+     * @param mixrd string/int $number
+     * @return array 
+     */
     public function select_multiple_lessons($number = 'all') {
         if(is_numeric($number)) $limit = $number;
         else $limit = null;

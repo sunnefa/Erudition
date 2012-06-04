@@ -1,4 +1,9 @@
 <?php
+/**
+ * The main controller, delegates control to post or get
+ * 
+ * @author Sunnefa Lind <sunnefa_lind@hotmail.com> 
+ */
 
 //is it a get request?
 if(count($_GET) > 0) {
