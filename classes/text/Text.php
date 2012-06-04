@@ -71,6 +71,18 @@ class Text {
             
         }
     }
+    
+    public function get_text_by_id($text_id) {
+        $text = $this->db_wrapper->select_data('pages__text', '*', "text_id = $text_id");
+        if($text) {
+            $text = array_flat($text);
+            
+            $this->text_id = $text['text_id'];
+            $this->text = $text['text'];
+            $this->text_name = $text['text_name'];
+            $this->page_id = $text['page_id'];
+        }
+    }
 }
 
 ?>
