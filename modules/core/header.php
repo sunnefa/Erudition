@@ -11,7 +11,7 @@ $nav_text = "";
 //loop through the navigation links
 foreach($navigation as $nav) {
     //these are not supposed to be in the header
-    $not_in_header = array('quiz', 'contact', 'logout', 'forgotten', '404');
+    $not_in_header = array('quiz', 'contact', 'logout', 'forgotten', '404', 'terms');
     if(is_logged_in()) {
         //if a user is logged in, these are not supposed to be in the header either
         array_push($not_in_header, 'signup', 'login', 'faq', 'terms', 'about');
